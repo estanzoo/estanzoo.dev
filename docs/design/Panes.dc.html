@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ethan Zhu — Panes landing page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+body{margin:0;background:#0F1216}
+a{color:#E6E8EB}a:hover{color:#FFFFFF}
+.ln{animation:ln .35s ease-out both}
+@keyframes ln{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.live{animation:live 1.1s ease-in-out infinite}
+@keyframes live{0%,100%{opacity:.3}50%{opacity:1}}
+.pane{transition:box-shadow .25s}
+.card{transition:border-color .2s, transform .25s cubic-bezier(.2,.8,.2,1), opacity .35s}
+.card:hover{border-color:#5B6677;transform:translateY(-4px)}
+.chip{transition:background .15s, color .15s, border-color .15s, transform .15s}
+.chip:hover{border-color:#9AA4B2}
+.chip:active{transform:scale(.96)}
+.job{transition:background .2s}
+.job:hover{background:#151A21}
+.nl{background:linear-gradient(currentColor,currentColor) no-repeat 12px calc(100% - 8px)/0 1px;transition:background-size .25s}
+.nl:hover{background-size:calc(100% - 24px) 1px}
+.cmd::placeholder{color:#6B7686}
+.cmd:focus{outline:none}
+.promptrow:focus-within{border-color:#9AA4B2}
+button:focus-visible,a:focus-visible{outline:2px solid #E6E8EB;outline-offset:2px}
+.f1l{animation-duration:5s;animation-iteration-count:infinite;animation-timing-function:steps(1)}
+@keyframes f1{0%,12%{opacity:.15}14%,80%{opacity:1}82%,100%{opacity:.15}}
+@keyframes f2{0%,26%{opacity:.15}28%,80%{opacity:1}82%,100%{opacity:.15}}
+@keyframes f3{0%,40%{opacity:.15}42%,80%{opacity:1}82%,100%{opacity:.15}}
+@keyframes f4{0%,54%{opacity:.15}56%,80%{opacity:1}82%,100%{opacity:.15}}
+@keyframes f5{0%,68%{opacity:.15}70%,80%{opacity:1}82%,100%{opacity:.15}}
+.rev{animation:rev 1.6s ease-in-out infinite}
+@keyframes rev{0%,100%{opacity:.15}35%,55%{opacity:1}}
+.sticker{transition:background .35s}
+.film{animation:film 5s linear infinite}
+@keyframes film{from{transform:translateX(0)}to{transform:translateX(-192px)}}
+@keyframes rv{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 45%}}
+@media (prefers-reduced-motion: reduce){.ln,.live,.rv,.f1l,.rev,.film{animation:none}.sticker{transition:none}.card,.chip,.pane,.nl,.grow,.bar{transition:none !important}}
+</style>
+</helmet>
+<div style="background: #0F1216; color: #E6E8EB; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.55">
+
+<header style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 20px clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="#top" style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; text-decoration: none">~/ethan-zhu</a>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 14px">
+<a class="nl" href="#about" style="text-decoration: none; padding: 12px 12px">about</a>
+<a class="nl" href="#projects" style="text-decoration: none; padding: 12px 12px">projects</a>
+<a class="nl" href="#experience" style="text-decoration: none; padding: 12px 12px">experience</a>
+<a class="nl" href="#interests" style="text-decoration: none; padding: 12px 12px">interests</a>
+<a class="nl" href="#contact" style="text-decoration: none; padding: 12px 12px">contact</a>
+</nav>
+</header>
+
+<section id="top" style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 16px clamp(20px, 4vw, 48px) 72px">
+<div onMouseMove="{{onMove}}" style="position: relative; border: 1px solid #2A313C; border-radius: 16px; overflow: hidden; background: #0B0E12">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient({{accent}} 1.2px, transparent 1.2px); background-size: 22px 22px; opacity: 0.6; mask-image: {{mask}}; -webkit-mask-image: {{mask}}"></div>
+
+<div style="position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 6px 12px 6px 20px; border-bottom: 1px solid #2A313C; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA4B2">
+<span>hq · session: portfolio</span>
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="display: inline-flex; align-items: center; gap: 8px"><span class="live" aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #7EE787"></span>3 panes</span>
+<sc-if value="{{booting}}" hint-placeholder-val="{{true}}">
+<button class="chip" onClick="{{skip}}" style="min-height: 44px; padding: 0 14px; border-radius: 8px; border: 1px solid #2A313C; background: transparent; color: #E6E8EB; font: inherit; cursor: pointer">skip intro</button>
+</sc-if>
+<sc-if value="{{booted}}" hint-placeholder-val="{{false}}">
+<button class="chip" onClick="{{replay}}" style="min-height: 44px; padding: 0 14px; border-radius: 8px; border: 1px solid #2A313C; background: transparent; color: #E6E8EB; font: inherit; cursor: pointer">replay intro</button>
+</sc-if>
+</div>
+</div>
+
+<div style="position: relative; display: flex; flex-wrap: wrap">
+
+<div class="pane" style="flex: 2 1 520px; min-width: 0; box-sizing: border-box; padding: clamp(20px, 3.4vw, 44px); display: flex; flex-direction: column; gap: 18px; min-height: 620px; box-shadow: inset 0 0 0 1px {{l0.ring}}">
+<button onClick="{{l0.pick}}" aria-pressed="{{l0.on}}" style="align-self: flex-start; min-height: 44px; padding: 0 10px; margin: -10px 0 -10px -10px; border: 0; border-radius: 6px; background: {{l0.bg}}; color: {{l0.fg}}; font-family: 'JetBrains Mono', monospace; font-size: 12px; cursor: pointer">[0] lead</button>
+<h1 aria-label="Ethan Zhu" onMouseEnter="{{rescramble}}" style="margin: 0; min-height: 1.84em; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(64px, 11vw, 176px); line-height: 0.92; letter-spacing: -0.03em; white-space: nowrap; overflow: hidden"><span aria-hidden="true" style="display: block">{{n1}}</span><span aria-hidden="true" style="display: block; color: {{accent}}">{{n2}}</span></h1>
+<p style="margin: 0; max-width: 520px; font-size: clamp(17px, 1.5vw, 20px); color: #C9CED6">Software engineering student at the University of Waterloo. I build backends, speech models and tooling for teams of coding agents.</p>
+
+<div aria-live="polite" style="margin-top: auto; min-height: 176px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 14px">
+<sc-for list="{{log}}" as="l" hint-placeholder-count="3">
+<div class="ln" style="color: {{l.color}}; overflow-wrap: anywhere">{{l.text}}<sc-if value="{{l.isLink}}" hint-placeholder-val="{{false}}"> <a href="{{l.href}}">{{l.linkText}}</a></sc-if></div>
+</sc-for>
+</div>
+
+<div class="promptrow" style="display: flex; align-items: center; gap: 10px; box-sizing: border-box; min-height: 52px; padding: 0 16px; border: 1px solid #2A313C; border-radius: 10px; background: #0F1216; font-family: 'JetBrains Mono', monospace; font-size: 15px">
+<label for="cmdin" style="color: {{accent}}; font-weight: 700">$</label>
+<input id="cmdin" class="cmd" type="text" value="{{cmd}}" onChange="{{onCmd}}" onKeyDown="{{onKey}}" onFocus="{{l0.pick}}" maxlength="60" autocomplete="off" spellcheck="false" aria-label="Type a command and press Enter" placeholder="type help and press enter" style="flex: 1 1 auto; min-width: 0; height: 50px; border: 0; background: transparent; color: #E6E8EB; font: inherit; caret-color: {{accent}}">
+<button onClick="{{submit}}" aria-label="Run command" style="flex: 0 0 auto; width: 44px; height: 44px; margin-right: -12px; border: 0; border-radius: 8px; background: transparent; color: #9AA4B2; cursor: pointer; display: inline-flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5v8H6"></path><path d="M10 9l-4 4 4 4"></path></svg>
+</button>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="5">
+<button class="chip" onClick="{{c.run}}" style="min-height: 44px; padding: 0 14px; border-radius: 8px; border: 1px solid #2A313C; background: #151A21; color: #E6E8EB; font-family: 'JetBrains Mono', monospace; font-size: 13px; cursor: pointer">{{c.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; border-left: 1px solid #2A313C">
+<div class="pane" style="flex: 1 1 0; min-height: 250px; box-sizing: border-box; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; border-bottom: 1px solid #2A313C; box-shadow: inset 0 0 0 1px {{l1.ring}}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -10px 0 0 -10px">
+<button onClick="{{l1.pick}}" aria-pressed="{{l1.on}}" style="min-height: 44px; padding: 0 10px; border: 0; border-radius: 6px; background: {{l1.bg}}; color: {{l1.fg}}; font: inherit; font-size: 12px; cursor: pointer">[1] agent/projects</button>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: #9AA4B2"><span class="{{st1.cls}}" aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: {{st1.color}}"></span>{{st1.label}}</span>
+</div>
+<div aria-live="polite" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{a1}}" as="l" hint-placeholder-count="3">
+<div class="ln" style="color: {{l.color}}; overflow-wrap: anywhere">{{l.text}}<sc-if value="{{l.isLink}}" hint-placeholder-val="{{false}}"> <a href="{{l.href}}">{{l.linkText}}</a></sc-if></div>
+</sc-for>
+</div>
+</div>
+<div class="pane" style="flex: 1 1 0; min-height: 250px; box-sizing: border-box; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; box-shadow: inset 0 0 0 1px {{l2.ring}}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -10px 0 0 -10px">
+<button onClick="{{l2.pick}}" aria-pressed="{{l2.on}}" style="min-height: 44px; padding: 0 10px; border: 0; border-radius: 6px; background: {{l2.bg}}; color: {{l2.fg}}; font: inherit; font-size: 12px; cursor: pointer">[2] agent/experience</button>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: #9AA4B2"><span class="{{st2.cls}}" aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: {{st2.color}}"></span>{{st2.label}}</span>
+</div>
+<div aria-live="polite" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{a2}}" as="l" hint-placeholder-count="3">
+<div class="ln" style="color: {{l.color}}; overflow-wrap: anywhere">{{l.text}}<sc-if value="{{l.isLink}}" hint-placeholder-val="{{false}}"> <a href="{{l.href}}">{{l.linkText}}</a></sc-if></div>
+</sc-for>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="about" class="rv" style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 24px clamp(20px, 4vw, 48px) 72px; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 2 1 480px; min-width: 0">
+<h2 style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; color: {{accent}}"># about</h2>
+<p style="margin: 0 0 16px; font-size: 20px; line-height: 1.5">I’m currently a full stack developer at <a href="#experience">Thri5</a>, shipping features from database to UI on a Kotlin and Spring Boot retail operations platform.</p>
+<p style="margin: 0; font-size: 18px; color: #C9CED6">Before that I fine-tuned speech models at Xplode with AI and wrote Go services at StepFun in Shanghai. Lately I’ve been most interested in how several coding agents can work on one codebase without stepping on each other, which is what hq is for.</p>
+</div>
+<dl style="flex: 1 1 280px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 14px">
+<div style="display: flex; gap: 16px"><dt style="flex: 0 0 72px; color: #9AA4B2">school</dt><dd style="margin: 0">BSE Software Engineering, UWaterloo, 2024 — 2029</dd></div>
+<div style="display: flex; gap: 16px"><dt style="flex: 0 0 72px; color: #9AA4B2">based</dt><dd style="margin: 0">Toronto / Waterloo, Ontario</dd></div>
+<div style="display: flex; gap: 16px"><dt style="flex: 0 0 72px; color: #9AA4B2">writes</dt><dd style="margin: 0">Elixir, Kotlin, Go, Python, Swift, SQL</dd></div>
+<div style="display: flex; gap: 16px"><dt style="flex: 0 0 72px; color: #9AA4B2">links</dt><dd style="margin: 0"><a href="https://github.com/estanzoo">github</a> · <a href="https://linkedin.com/in/estanzoo">linkedin</a></dd></div>
+</dl>
+</section>
+
+<section id="projects" class="rv" style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 24px clamp(20px, 4vw, 48px) 72px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-bottom: 20px">
+<h2 style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; color: {{accent}}"># projects</h2>
+<div role="group" aria-label="Filter projects" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+<button class="chip" onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid {{f.bd}}; background: {{f.bg}}; color: {{f.fg}}; font-family: 'JetBrains Mono', monospace; font-size: 13px; cursor: pointer">{{f.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="4">
+<article class="card" style="flex: 1 1 440px; min-width: 0; box-sizing: border-box; background: #151A21; border: 1px solid #2A313C; border-radius: 14px; padding: 28px 28px 16px; display: flex; flex-direction: column; gap: 14px; opacity: {{p.op}}">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 1.1; font-weight: 700">{{p.name}}</h3><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA4B2">{{p.date}}</span></div>
+<p style="margin: 0; color: #C9CED6">{{p.desc}}</p>
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA4B2">{{p.tags}}</div>
+<div class="grow" style="display: grid; grid-template-rows: {{p.rows}}; transition: grid-template-rows 0.4s cubic-bezier(.2,.8,.2,1)">
+<div style="overflow: hidden; min-height: 0">
+<ul style="margin: 0; padding: 14px 0 4px 18px; border-top: 1px solid #2A313C; display: flex; flex-direction: column; gap: 8px; color: #C9CED6; font-size: 15px">
+<sc-for list="{{p.points}}" as="pt" hint-placeholder-count="3">
+<li>{{pt.t}}</li>
+</sc-for>
+</ul>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+<button onClick="{{p.toggle}}" aria-expanded="{{p.open}}" style="min-height: 44px; padding: 0; border: 0; background: transparent; color: {{accent}}; font: inherit; cursor: pointer">{{p.toggleLabel}}</button>
+<sc-if value="{{p.hasLink}}" hint-placeholder-val="{{true}}"><a href="{{p.href}}" style="display: inline-flex; align-items: center; min-height: 44px">{{p.linkText}} ↗</a></sc-if>
+<sc-if value="{{p.noLink}}" hint-placeholder-val="{{false}}"><span style="display: inline-flex; align-items: center; min-height: 44px; color: #9AA4B2">[add link]</span></sc-if>
+</div>
+</article>
+</sc-for>
+</div>
+<div style="margin-top: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #9AA4B2">
+<span>also on github:</span>
+<a href="https://github.com/subtotechnoblade/Grok_Alpha_Zero" style="display: inline-flex; align-items: center; min-height: 44px">Grok_Alpha_Zero (Python)</a>
+<a href="https://github.com/estanzoo/RuneVault" style="display: inline-flex; align-items: center; min-height: 44px">RuneVault (C++)</a>
+<a href="https://github.com/estanzoo?tab=repositories" style="display: inline-flex; align-items: center; min-height: 44px">all repositories ↗</a>
+</div>
+</section>
+
+<section id="experience" class="rv" style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 24px clamp(20px, 4vw, 48px) 72px">
+<h2 style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; color: {{accent}}"># experience</h2>
+<sc-for list="{{jobs}}" as="j" hint-placeholder-count="3">
+<article class="job" style="border-bottom: 1px solid #2A313C; border-radius: 10px; padding: 0 16px; margin: 0 -16px">
+<button onClick="{{j.toggle}}" aria-expanded="{{j.open}}" style="width: 100%; padding: 22px 0; border: 0; background: transparent; color: #E6E8EB; font: inherit; text-align: left; cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 40px">
+<span style="flex: 0 0 200px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #9AA4B2">{{j.when}}</span>
+<span style="flex: 1 1 380px; min-width: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; line-height: 1.2; font-weight: 700">{{j.role}} <span style="color: #9AA4B2; font-weight: 500">· {{j.org}}</span></span>
+<span aria-hidden="true" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: {{accent}}">{{j.sign}}</span>
+</button>
+<div class="grow" style="display: grid; grid-template-rows: {{j.rows}}; transition: grid-template-rows 0.45s cubic-bezier(.2,.8,.2,1)">
+<div style="overflow: hidden; min-height: 0">
+<div style="display: flex; flex-wrap: wrap; gap: 20px 40px; padding: 0 0 28px">
+<div style="flex: 0 0 200px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #9AA4B2">{{j.where}}</div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<ul style="margin: 0; padding: 0 0 0 18px; max-width: 760px; display: flex; flex-direction: column; gap: 8px; color: #C9CED6">
+<sc-for list="{{j.points}}" as="pt" hint-placeholder-count="3">
+<li>{{pt.t}}</li>
+</sc-for>
+</ul>
+<sc-if value="{{j.hasChart}}" hint-placeholder-val="{{false}}">
+<div role="img" aria-label="Relative word error rate: fine-tuned Whisper V3 is 40.7% lower than the baseline, across 8 languages" style="max-width: 560px; display: flex; flex-direction: column; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA4B2">
+<div style="display: flex; justify-content: space-between; gap: 12px"><span>Whisper V3, baseline WER</span><span>100%</span></div>
+<div style="height: 10px; border-radius: 5px; background: #5B6677"></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; color: #E6E8EB"><span>after LoRA fine-tuning, 8 languages</span><span>−40.7%</span></div>
+<div style="height: 10px; border-radius: 5px; background: #2A313C"><div class="bar" style="height: 10px; border-radius: 5px; background: {{accent}}; width: {{j.barW}}; transition: width 1.2s cubic-bezier(.2,.8,.2,1) 0.25s"></div></div>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</div>
+</article>
+</sc-for>
+</section>
+
+<section id="interests" class="rv" style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 24px clamp(20px, 4vw, 48px) 72px">
+<h2 style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; color: {{accent}}"># interests</h2>
+<p style="margin: 0 0 24px; font-size: 20px; max-width: 640px">What I’m into when I’m not at a keyboard.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+
+<article class="card" style="flex: 1 1 300px; min-width: 0; box-sizing: border-box; background: #151A21; border: 1px solid #2A313C; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<div aria-hidden="true" style="height: 112px; display: flex; flex-direction: column; justify-content: center; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span class="f1l" style="animation-name: f1; width: 36px; height: 36px; border-radius: 50%; background: #FF5A4D"></span>
+<span class="f1l" style="animation-name: f2; width: 36px; height: 36px; border-radius: 50%; background: #FF5A4D"></span>
+<span class="f1l" style="animation-name: f3; width: 36px; height: 36px; border-radius: 50%; background: #FF5A4D"></span>
+<span class="f1l" style="animation-name: f4; width: 36px; height: 36px; border-radius: 50%; background: #FF5A4D"></span>
+<span class="f1l" style="animation-name: f5; width: 36px; height: 36px; border-radius: 50%; background: #FF5A4D"></span>
+</div>
+<div style="display: flex; align-items: center; gap: 6px; max-width: 228px">
+<sc-for list="{{revs}}" as="r" hint-placeholder-count="12">
+<span class="rev" style="flex: 1 1 0; height: 14px; border-radius: 3px; background: {{r.color}}; animation-delay: {{r.delay}}"></span>
+</sc-for>
+</div>
+</div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA4B2">01 · watching and driving</span>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; line-height: 1.1; font-weight: 700">F1 and sim racing</h3>
+<p style="margin: 0; color: #C9CED6">[Team or driver you follow, your sim and rig, favourite track]</p>
+</article>
+
+<article class="card" style="flex: 1 1 300px; min-width: 0; box-sizing: border-box; background: #151A21; border: 1px solid #2A313C; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<div aria-hidden="true" style="height: 112px; display: flex; align-items: center">
+<div style="width: 100%; height: 96px; overflow: hidden; border-radius: 6px; background: #0B0E12">
+<div class="film" style="width: calc(100% + 192px); height: 96px; box-sizing: border-box; padding: 6px 0; display: flex; flex-direction: column; justify-content: space-between">
+<div style="height: 8px; background: repeating-linear-gradient(90deg, transparent 0 7px, #5B6677 7px 17px, transparent 17px 24px)"></div>
+<div style="height: 56px; background: repeating-linear-gradient(90deg, transparent 0 6px, #2A313C 6px 90px, transparent 90px 96px)"></div>
+<div style="height: 8px; background: repeating-linear-gradient(90deg, transparent 0 7px, #5B6677 7px 17px, transparent 17px 24px)"></div>
+</div>
+</div>
+</div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA4B2">02 · watching</span>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; line-height: 1.1; font-weight: 700">Films</h3>
+<p style="margin: 0; color: #C9CED6">[Favourite directors, recent watches, Letterboxd link]</p>
+</article>
+
+<article class="card" style="flex: 1 1 300px; min-width: 0; box-sizing: border-box; background: #151A21; border: 1px solid #2A313C; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<div style="min-height: 112px; display: flex; align-items: center; gap: 20px">
+<div aria-hidden="true" style="flex: 0 0 104px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{cube}}" as="q" hint-placeholder-count="9">
+<span class="sticker" style="aspect-ratio: 1 / 1; border-radius: 5px; background: {{q.c}}"></span>
+</sc-for>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 6px; font-family: 'JetBrains Mono', monospace">
+<span aria-live="off" style="font-size: 32px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums">{{timerText}}</span>
+<span style="font-size: 12px; color: #9AA4B2; overflow-wrap: anywhere">{{scr}}</span>
+</div>
+</div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA4B2">03 · solving</span>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; line-height: 1.1; font-weight: 700">Speed cubing</h3>
+<p style="margin: 0; color: #C9CED6">[Your events and personal bests]</p>
+<div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px">
+<button class="chip" onClick="{{cubeScramble}}" style="min-height: 44px; padding: 0 14px; border-radius: 8px; border: 1px solid #2A313C; background: #0F1216; color: #E6E8EB; font-family: 'JetBrains Mono', monospace; font-size: 13px; cursor: pointer">new scramble</button>
+<button class="chip" onClick="{{toggleTimer}}" aria-pressed="{{timerOn}}" style="min-height: 44px; min-width: 116px; padding: 0 14px; border-radius: 8px; border: 1px solid #2A313C; background: #0F1216; color: #E6E8EB; font-family: 'JetBrains Mono', monospace; font-size: 13px; cursor: pointer">{{timerLabel}}</button>
+</div>
+</article>
+
+</div>
+</section>
+
+<section id="contact" class="rv" style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 24px clamp(20px, 4vw, 48px) 64px">
+<div style="border: 1px solid #2A313C; border-radius: 16px; background: #0B0E12; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 20px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; color: #9AA4B2"><span style="color: {{accent}}">$</span> hq send ethan "hello"</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(36px, 5.5vw, 72px); line-height: 1.02; letter-spacing: -0.02em">Want to get in touch?</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="mailto:e35zhu@uwaterloo.ca" style="display: inline-flex; align-items: center; min-height: 52px; box-sizing: border-box; padding: 0 24px; border-radius: 10px; background: {{accent}}; color: #0F1216; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; text-decoration: none">e35zhu@uwaterloo.ca</a>
+<button class="chip" onClick="{{copy}}" style="min-height: 52px; min-width: 150px; box-sizing: border-box; padding: 0 24px; border-radius: 10px; border: 1px solid #2A313C; background: transparent; color: #E6E8EB; font-family: 'JetBrains Mono', monospace; font-size: 14px; cursor: pointer"><span aria-live="polite">{{copyLabel}}</span></button>
+<a class="chip" href="https://github.com/estanzoo" style="display: inline-flex; align-items: center; min-height: 52px; box-sizing: border-box; padding: 0 24px; border-radius: 10px; border: 1px solid #2A313C; font-family: 'JetBrains Mono', monospace; font-size: 14px; text-decoration: none">GitHub</a>
+<a class="chip" href="https://linkedin.com/in/estanzoo" style="display: inline-flex; align-items: center; min-height: 52px; box-sizing: border-box; padding: 0 24px; border-radius: 10px; border: 1px solid #2A313C; font-family: 'JetBrains Mono', monospace; font-size: 14px; text-decoration: none">LinkedIn</a>
+</div>
+</div>
+<p style="margin: 24px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA4B2">© 2026 Ethan Zhu</p>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FFB454","options":["#FFB454","#7EE787","#79C0FF","#F2A6FF"]},"autoplay":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+state = { log: [], a1: [], a2: [], s1: 'idle', s2: 'idle', cmd: '', focus: 0, name: '', booted: false, mx: '74%', my: '26%', filter: 'all', openP: 'hq', openJ: 'xplode', copied: '', tOn: false, tMs: 0, scr: "R U2 F' L D2 B' R2 U' F L' D B2", cube: ['#4D9BFF', '#F2F2F2', '#FF5A4D', '#FFD84D', '#5BD68A', '#F2F2F2', '#FF9F43', '#4D9BFF', '#FFD84D'] };
+
+componentDidMount() {
+this.timers = [];
+this.n = 0;
+this.reduce = false;
+try { this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+if (this.reduce || this.props.autoplay === false) this.finish(); else this.boot();
+}
+
+componentWillUnmount() { this.stop(); if (this.raf) cancelAnimationFrame(this.raf); if (this.tiv) clearInterval(this.tiv); }
+
+stop() {
+(this.timers || []).forEach(function (t) { clearTimeout(t); });
+this.timers = [];
+if (this.iv) { clearInterval(this.iv); this.iv = null; }
+}
+
+at(ms, fn) { if (!this.timers) this.timers = []; this.timers.push(setTimeout(fn, ms)); }
+
+mk(kind, text, href, linkText) {
+this.n = (this.n || 0) + 1;
+var colors = { cmd: '#9AA4B2', dim: '#9AA4B2', out: '#E6E8EB', ok: '#7EE787', err: '#FF9B8A' };
+return { k: 'l' + this.n, text: text, color: colors[kind] || '#E6E8EB', href: href || '', linkText: linkText || '', isLink: !!href };
+}
+
+push(target, kind, text, href, linkText) {
+var line = this.mk(kind, text, href, linkText);
+var max = target === 'log' ? 6 : 5;
+this.setState(function (prev) { var o = {}; o[target] = prev[target].concat([line]).slice(-max); return o; });
+}
+
+scramble() {
+var self = this, target = 'Ethan Zhu', chars = '01<>/_#$%=+*', i = 0;
+if (this.iv) clearInterval(this.iv);
+if (this.reduce) { this.setState({ name: target }); return; }
+this.iv = setInterval(function () {
+i++;
+var shown = Math.floor(i / 3), out = '';
+for (var c = 0; c < target.length; c++) {
+out += (c < shown || target[c] === ' ') ? target[c] : chars[Math.floor(Math.random() * chars.length)];
+}
+self.setState({ name: out });
+if (shown >= target.length) { clearInterval(self.iv); self.iv = null; }
+}, 40);
+}
+
+typeCmd(text, t0, then) {
+var self = this;
+for (let i = 1; i <= text.length; i++) {
+this.at(t0 + i * 55, function () { self.setState({ cmd: text.slice(0, i) }); });
+}
+var end = t0 + text.length * 55 + 280;
+this.at(end, function () { self.setState({ cmd: '' }); then(); });
+return end;
+}
+
+agent(which, t0) {
+var self = this;
+if (which === 1) {
+this.setState({ a1: [], s1: 'working' });
+this.at(t0, function () { self.push('a1', 'dim', '← lead: what has he shipped?'); });
+this.at(t0 + 600, function () { self.push('a1', 'dim', 'reading github.com/estanzoo'); });
+this.at(t0 + 1400, function () { self.push('a1', 'out', '→ lead: hq, NoteWorks, Ring or Ping, Gnostic'); });
+this.at(t0 + 2000, function () { self.push('a1', 'ok', 'done · 4 projects', '#projects', 'open ↓'); self.setState({ s1: 'done' }); });
+} else {
+this.setState({ a2: [], s2: 'working' });
+this.at(t0, function () { self.push('a2', 'dim', '← lead: where has he worked?'); });
+this.at(t0 + 900, function () { self.push('a2', 'out', '→ lead: Thri5, Xplode with AI, StepFun'); });
+this.at(t0 + 1600, function () { self.push('a2', 'out', '→ agent/projects: mention the 40.7% WER drop'); });
+this.at(t0 + 2300, function () { self.push('a2', 'ok', 'done · 3 roles', '#experience', 'open ↓'); self.setState({ s2: 'done' }); });
+}
+}
+
+boot() {
+var self = this;
+this.stop();
+this.setState({ log: [], a1: [], a2: [], s1: 'idle', s2: 'idle', cmd: '', name: '', booted: false, focus: 0 });
+var t = this.typeCmd('whoami', 500, function () { self.push('log', 'cmd', '$ whoami'); self.scramble(); });
+this.typeCmd('hq dispatch --team portfolio', t + 1500, function () {
+self.push('log', 'cmd', '$ hq dispatch --team portfolio');
+self.push('log', 'out', 'dispatched 2 agents, 2 worktrees');
+self.agent(1, 300);
+self.agent(2, 500);
+self.at(3100, function () {
+self.push('log', 'ok', 'both agents reported. your turn: type help');
+self.setState({ booted: true });
+});
+});
+}
+
+finish() {
+this.stop();
+this.setState({
+name: 'Ethan Zhu', cmd: '', booted: true, s1: 'done', s2: 'done', focus: 0,
+log: [this.mk('cmd', '$ whoami'), this.mk('cmd', '$ hq dispatch --team portfolio'), this.mk('out', 'dispatched 2 agents, 2 worktrees'), this.mk('ok', 'both agents reported. your turn: type help')],
+a1: [this.mk('dim', '← lead: what has he shipped?'), this.mk('out', '→ lead: hq, NoteWorks, Ring or Ping, Gnostic'), this.mk('ok', 'done · 4 projects', '#projects', 'open ↓')],
+a2: [this.mk('dim', '← lead: where has he worked?'), this.mk('out', '→ lead: Thri5, Xplode with AI, StepFun'), this.mk('out', '→ agent/projects: mention the 40.7% WER drop'), this.mk('ok', 'done · 3 roles', '#experience', 'open ↓')]
+});
+}
+
+run(raw) {
+var text = String(raw || '').trim();
+var c = text.toLowerCase();
+if (!c) return;
+if (!this.state.booted) this.finish();
+this.setState({ cmd: '' });
+if (c === 'clear') { this.setState({ log: [] }); return; }
+if (c === 'replay') { this.boot(); return; }
+this.push('log', 'cmd', '$ ' + text);
+if (c === 'help') {
+this.push('log', 'out', 'whoami · projects · experience · interests · stack · contact · clear · replay');
+} else if (c === 'whoami') {
+this.scramble();
+this.push('log', 'out', 'ethan zhu · software engineering, uwaterloo ’29');
+} else if (c === 'projects') {
+this.push('log', 'out', '→ agent/projects: report');
+this.setState({ focus: 1 });
+this.agent(1, 300);
+} else if (c === 'experience') {
+this.push('log', 'out', '→ agent/experience: report');
+this.setState({ focus: 2 });
+this.agent(2, 300);
+} else if (c === 'stack') {
+this.push('log', 'out', 'elixir · kotlin · go · python · swift · typescript · sql · c++');
+} else if (c === 'interests') {
+this.push('log', 'out', 'f1 + sim racing · films · speed cubing', '#interests', 'open ↓');
+} else if (c === 'contact') {
+this.push('log', 'out', 'mail:', 'mailto:e35zhu@uwaterloo.ca', 'e35zhu@uwaterloo.ca');
+} else if (c.indexOf('sudo') === 0) {
+this.push('log', 'ok', 'permission granted.', 'mailto:e35zhu@uwaterloo.ca', 'hire ethan →');
+} else {
+this.push('log', 'err', 'command not found: ' + text.slice(0, 24) + ' · try help');
+}
+}
+
+renderVals() {
+var self = this, s = this.state;
+var ac = this.props.accent ?? '#FFB454';
+var stat = function (v) { return { label: v, color: v === 'working' ? ac : v === 'done' ? '#7EE787' : '#5B6677', cls: v === 'working' ? 'live' : '' }; };
+var lab = function (i) { var on = s.focus === i; return { on: on, bg: on ? ac : 'transparent', fg: on ? '#0F1216' : ac, ring: on ? ac : 'transparent', pick: function () { self.setState({ focus: i }); } }; };
+
+var P = [
+{ id: 'hq', name: 'hq', date: 'Oct 2026', cats: ['ai', 'backend'], tags: 'Elixir · OTP · Claude Code · Bash', href: 'https://github.com/estanzoo/hq', linkText: 'github.com/estanzoo/hq',
+desc: 'An Elixir/OTP service that coordinates teams of Claude Code agents working in parallel, and lets them message each other mid-task.',
+points: ['Every agent is independently supervised.', 'Messages queue while an agent is busy and survive restarts.', 'A separate git worktree for every task prevents conflicts between parallel agents.', 'The engineer can talk to any sub-agent directly.'] },
+{ id: 'noteworks', name: 'NoteWorks', date: 'Mar 2026', cats: ['ios', 'backend'], tags: 'Swift · TypeScript · PostgreSQL · Supabase', href: '', linkText: '',
+desc: 'A native iPad note editor in SwiftUI on a layered serverless Supabase backend.',
+points: ['Custom PKCanvasView integration with gesture coordination between zoom/pan and drawing.', 'Per-page ink persistence, with overlay layers for text and image annotations.', 'Edge functions handle business logic, validation and file orchestration; AI API calls go through a secure server-side pipeline.', 'Apple, Google and email OTP sign-in, plus GitHub Actions CI for schema migrations and TypeScript type generation.'] },
+{ id: 'ring', name: 'Ring or Ping', date: 'Jan 2025', cats: ['ios', 'backend'], tags: 'Swift · Python · Django · Nginx · Gunicorn', href: '', linkText: '',
+desc: 'An iOS alarm that alerts your whole friend group if you snooze or stop it without getting out of bed.',
+points: ['iOS app written in Swift with personalised alarms.', 'Django REST framework backend deployed on Amazon EC2.'] },
+{ id: 'gnostic', name: 'Gnostic', date: 'Aug 2023', cats: ['ai'], tags: 'Notion API · OpenAI · Flask', href: 'https://github.com/Trentiumz/IgnitionHacks2023', linkText: 'github.com/Trentiumz/IgnitionHacks2023',
+desc: 'A Chrome extension that pulls your Notion notes and turns them into flashcards.',
+points: ['Winner of Most Innovative Project at Ignition Hacks 2023.', 'Fetches notes through the Notion API and generates flashcards with OpenAI.'] }
+];
+var J = [
+{ id: 'thri5', role: 'Full Stack Developer', org: 'Thri5 Inc.', when: 'Sep — Dec 2026', where: 'Toronto, Ontario', chart: false,
+points: ['Production features from database to UI on a Kotlin, Spring Boot and PostgreSQL retail operations platform.', 'AI-assisted development workflows with Claude Code, running specialised sub-agents in parallel through graph-based execution loops.', 'Code quality standards for the Kotlin mobile apps: automated testing, structured reviews, typed pages and ViewModels.'] },
+{ id: 'xplode', role: 'Machine Learning Engineer', org: 'Xplode with AI', when: 'Jan — Apr 2026', where: 'Toronto, Ontario', chart: true,
+points: ['LoRA fine-tuning of OpenAI’s Whisper V3, reducing WER by 40.7% across 8 languages.', 'Audio language ID with a fine-tuned XLS-R and an XLM-based transformer.', 'Backend of a FastAPI service for low-latency streaming TTS and translation over WebSockets; fine-tuned Piper TTS with custom phonemizers.'] },
+{ id: 'stepfun', role: 'Backend Developer', org: 'StepFun, DeepEat team', when: 'May — Aug 2025', where: 'Shanghai, China', chart: false,
+points: ['Go backend for an iOS app on a Tencent RPC service, exposing new endpoints for the frontend.', 'Modified preorder tree traversal for storing and querying hierarchical data, with GORM and MongoDB.', 'Semantic search using vector embeddings, integrating StepFun’s LLM with a public data source.'] }
+];
+var wrap = function (arr) { return arr.map(function (t) { return { t: t }; }); };
+
+return {
+accent: ac,
+mask: 'radial-gradient(280px circle at ' + s.mx + ' ' + s.my + ', #000 0%, transparent 100%)',
+n1: s.name.slice(0, 5), n2: s.name.slice(6),
+cmd: s.cmd, log: s.log, a1: s.a1, a2: s.a2,
+st1: stat(s.s1), st2: stat(s.s2),
+l0: lab(0), l1: lab(1), l2: lab(2),
+booted: s.booted, booting: !s.booted,
+skip: function () { self.finish(); },
+replay: function () { self.boot(); },
+rescramble: function () { if (self.state.booted && !self.iv) self.scramble(); },
+onCmd: function (e) { self.setState({ cmd: e.target.value }); },
+onKey: function (e) { if (e.key === 'Enter') { e.preventDefault(); self.run(self.state.cmd); } },
+submit: function () { self.run(self.state.cmd || 'help'); },
+onMove: function (e) {
+var r = e.currentTarget.getBoundingClientRect();
+self.pm = { x: e.clientX - r.left, y: e.clientY - r.top };
+if (self.raf || self.reduce) return;
+self.raf = requestAnimationFrame(function () { self.raf = null; self.setState({ mx: Math.round(self.pm.x) + 'px', my: Math.round(self.pm.y) + 'px' }); });
+},
+chips: ['help', 'projects', 'experience', 'stack', 'contact'].map(function (c) { return { label: c, run: function () { self.run(c); } }; }),
+filters: [['all', 'all'], ['ai', 'agents + ai'], ['ios', 'ios'], ['backend', 'backend']].map(function (f) {
+var on = s.filter === f[0];
+return { label: f[1], on: on, bg: on ? ac : 'transparent', fg: on ? '#0F1216' : '#E6E8EB', bd: on ? ac : '#2A313C', pick: function () { self.setState({ filter: f[0] }); } };
+}),
+projects: P.map(function (p) {
+var open = s.openP === p.id, match = s.filter === 'all' || p.cats.indexOf(s.filter) >= 0;
+return { name: p.name, date: p.date, desc: p.desc, tags: p.tags, href: p.href, linkText: p.linkText, hasLink: !!p.href, noLink: !p.href, points: wrap(p.points), open: open, rows: open ? '1fr' : '0fr', op: match ? '1' : '0.25', toggleLabel: open ? '− less' : '+ details', toggle: function () { self.setState({ openP: open ? '' : p.id }); } };
+}),
+jobs: J.map(function (j) {
+var open = s.openJ === j.id;
+return { role: j.role, org: j.org, when: j.when, where: j.where, points: wrap(j.points), hasChart: j.chart, open: open, rows: open ? '1fr' : '0fr', sign: open ? '−' : '+', barW: open ? '59.3%' : '100%', toggle: function () { self.setState({ openJ: open ? '' : j.id }); } };
+}),
+revs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) { return { delay: (i * 0.09).toFixed(2) + 's', color: i < 5 ? '#7EE787' : i < 9 ? '#FFB454' : '#FF5A4D' }; }),
+cube: s.cube.map(function (c) { return { c: c }; }),
+scr: s.scr,
+timerText: (s.tMs / 1000).toFixed(2),
+timerOn: s.tOn,
+timerLabel: s.tOn ? 'stop' : 'start timer',
+cubeScramble: function () {
+var faces = 'RLUDFB', suf = ['', "'", '2'], cols = ['#F2F2F2', '#FFD84D', '#FF5A4D', '#FF9F43', '#4D9BFF', '#5BD68A'], moves = [], last = -1;
+while (moves.length < 12) { var f = Math.floor(Math.random() * 6); if (f === last) continue; last = f; moves.push(faces[f] + suf[Math.floor(Math.random() * 3)]); }
+var cube = []; for (var i = 0; i < 9; i++) cube.push(cols[Math.floor(Math.random() * 6)]);
+if (self.tiv) { clearInterval(self.tiv); self.tiv = null; }
+self.setState({ scr: moves.join(' '), cube: cube, tOn: false, tMs: 0 });
+},
+toggleTimer: function () {
+if (self.tiv) { clearInterval(self.tiv); self.tiv = null; self.setState({ tOn: false, tMs: Date.now() - self.t0 }); return; }
+self.t0 = Date.now();
+self.setState({ tOn: true, tMs: 0 });
+self.tiv = setInterval(function () { self.setState({ tMs: Date.now() - self.t0 }); }, 47);
+},
+copyLabel: s.copied === 'ok' ? 'copied' : s.copied === 'fail' ? 'copy blocked' : 'copy email',
+copy: function () {
+var done = function (v) { self.setState({ copied: v }); setTimeout(function () { self.setState({ copied: '' }); }, 1800); };
+try { navigator.clipboard.writeText('e35zhu@uwaterloo.ca').then(function () { done('ok'); }, function () { done('fail'); }); } catch (e) { done('fail'); }
+}
+};
+}
+}
+</script>
+</body>
+</html>
