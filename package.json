@@ -23,7 +23,8 @@
     "screens:renderAll": "node tools/screens/cli.mjs renderAll",
     "screenshots": "tools/screenshots/docker.sh",
     "screenshots:update": "tools/screenshots/docker.sh --update-snapshots=changed",
-    "screens:approve": "node tools/screenshots/approve.mjs"
+    "screens:approve": "node tools/screenshots/approve.mjs",
+    "render:diff": "tools/render-diff.sh"
   },
   "engines": {
     "node": ">=22.18"
