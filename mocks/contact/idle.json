@@ -1,0 +1,26 @@
+{
+  "_scenario": "A visitor reaches the end of the page and sees how to get in touch.",
+  "vm": {
+    "prompt": "hq send ethan \"hello\"",
+    "heading": "Want to get in touch?",
+    "mail": {
+      "href": "mailto:hello@estanzoo.dev",
+      "label": "hello@estanzoo.dev"
+    },
+    "copy": {
+      "kind": "idle",
+      "label": "copy email"
+    },
+    "links": [
+      {
+        "href": "https://github.com/estanzoo",
+        "label": "GitHub"
+      },
+      {
+        "href": "https://linkedin.com/in/estanzoo",
+        "label": "LinkedIn"
+      }
+    ],
+    "footer": "© 2026 Ethan Zhu"
+  }
+}

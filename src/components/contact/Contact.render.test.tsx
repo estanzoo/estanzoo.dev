@@ -4,7 +4,7 @@
 // Contact.behaviour.test.tsx), and where the copy comes from (content.ts).
 import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
-import { contact, site } from '../content';
+import { contact, site } from '../../content';
 import { Contact } from './Contact';
 
 function renderContact(): Document {

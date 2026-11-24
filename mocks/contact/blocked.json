@@ -1,0 +1,26 @@
+{
+  "_scenario": "The visitor clicked copy email but the browser refused clipboard access.",
+  "vm": {
+    "prompt": "hq send ethan \"hello\"",
+    "heading": "Want to get in touch?",
+    "mail": {
+      "href": "mailto:hello@estanzoo.dev",
+      "label": "hello@estanzoo.dev"
+    },
+    "copy": {
+      "kind": "blocked",
+      "label": "copy blocked"
+    },
+    "links": [
+      {
+        "href": "https://github.com/estanzoo",
+        "label": "GitHub"
+      },
+      {
+        "href": "https://linkedin.com/in/estanzoo",
+        "label": "LinkedIn"
+      }
+    ],
+    "footer": "© 2026 Ethan Zhu"
+  }
+}

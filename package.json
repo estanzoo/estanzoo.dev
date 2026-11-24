@@ -13,7 +13,11 @@
     "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
     "og": "node scripts/og.mjs",
-    "pins:update": "PINS_UPDATE=1 vitest run --project unit src/testing/pins.test.ts"
+    "pins:update": "PINS_UPDATE=1 vitest run --project unit src/testing/pins.test.ts",
+    "screens": "tools/worktree-env.sh >/dev/null && node tools/screens/cli.mjs serve",
+    "screens:list": "node tools/screens/cli.mjs list",
+    "screens:render": "node tools/screens/cli.mjs render",
+    "screens:renderAll": "node tools/screens/cli.mjs renderAll"
   },
   "engines": {
     "node": ">=22.18"
@@ -39,6 +43,7 @@
     "parse5": "^8.1.1",
     "typescript": "^5.9.3",
     "vite": "^6.4.6",
-    "vitest": "^5.1.1"
+    "vitest": "^5.1.1",
+    "zod": "^4.6.7"
   }
 }

@@ -9,7 +9,7 @@
 // hangs under vitest fake timers.
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { site } from '../content';
+import { site } from '../../content';
 import { Contact } from './Contact';
 
 const COPY_RESET_MS = 1800;

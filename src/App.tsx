@@ -4,7 +4,7 @@ import { About } from './components/About';
 import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
 import { Interests } from './components/Interests';
-import { Contact } from './components/Contact';
+import { Contact } from './components/contact/Contact';
 
 /** The whole page, in design order (docs/design/Panes.dc.html). */
 export function App() {
