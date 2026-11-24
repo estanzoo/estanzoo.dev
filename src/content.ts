@@ -174,6 +174,7 @@ export const werChart = { reduction: 40.7, languages: 8 };
 
 /** Interest cards. Replace the bracketed text when you're ready. */
 export const interests = {
+  intro: 'What I’m into when I’m not at a keyboard.',
   f1: { kicker: '01 · watching and driving', title: 'F1 and sim racing', body: '[Team or driver you follow, your sim and rig, favourite track]' },
   films: { kicker: '02 · watching', title: 'Films', body: '[Favourite directors, recent watches, Letterboxd link]' },
   cubing: { kicker: '03 · solving', title: 'Speed cubing', body: '[Your events and personal bests]' },

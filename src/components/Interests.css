@@ -1,0 +1,226 @@
+/* Interests section: three cards (F1, films, speed cubing).
+   Ported from the #interests block of docs/design/Panes.dc.html.
+   Reduced-motion for .f1l/.rev/.film/.sticker is also covered in global.css. */
+
+.interests-label {
+  margin-bottom: 8px;
+}
+
+.interests-intro {
+  margin: 0 0 24px;
+  max-width: 640px;
+  font-size: 20px;
+}
+
+.interests-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.interest-card {
+  flex: 1 1 300px;
+  min-width: 0;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.interest-visual {
+  height: 112px;
+}
+
+.interest-kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.interest-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.interest-body {
+  color: var(--body);
+}
+
+/* ---------- F1: start lights + rev bar ---------- */
+.f1-visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.f1-lights {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.f1l {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ff5a4d;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(1);
+}
+
+@keyframes f1 {
+  0%, 12% { opacity: 0.15; }
+  14%, 80% { opacity: 1; }
+  82%, 100% { opacity: 0.15; }
+}
+@keyframes f2 {
+  0%, 26% { opacity: 0.15; }
+  28%, 80% { opacity: 1; }
+  82%, 100% { opacity: 0.15; }
+}
+@keyframes f3 {
+  0%, 40% { opacity: 0.15; }
+  42%, 80% { opacity: 1; }
+  82%, 100% { opacity: 0.15; }
+}
+@keyframes f4 {
+  0%, 54% { opacity: 0.15; }
+  56%, 80% { opacity: 1; }
+  82%, 100% { opacity: 0.15; }
+}
+@keyframes f5 {
+  0%, 68% { opacity: 0.15; }
+  70%, 80% { opacity: 1; }
+  82%, 100% { opacity: 0.15; }
+}
+
+.f1-revs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 228px;
+}
+
+.rev {
+  flex: 1 1 0;
+  height: 14px;
+  border-radius: 3px;
+  animation: rev 1.6s ease-in-out infinite;
+}
+
+@keyframes rev {
+  0%, 100% { opacity: 0.15; }
+  35%, 55% { opacity: 1; }
+}
+
+/* ---------- Films: scrolling strip ---------- */
+.film-visual {
+  display: flex;
+  align-items: center;
+}
+
+.film-window {
+  width: 100%;
+  height: 96px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--frame);
+}
+
+.film {
+  width: calc(100% + 192px);
+  height: 96px;
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: film 5s linear infinite;
+}
+
+.film-holes {
+  height: 8px;
+  background: repeating-linear-gradient(90deg, transparent 0 7px, var(--line-hover) 7px 17px, transparent 17px 24px);
+}
+
+.film-frames {
+  height: 56px;
+  background: repeating-linear-gradient(90deg, transparent 0 6px, var(--line) 6px 90px, transparent 90px 96px);
+}
+
+@keyframes film {
+  from { transform: translateX(0); }
+  to { transform: translateX(-192px); }
+}
+
+/* ---------- Speed cubing ---------- */
+.cube-visual {
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cube-grid {
+  flex: 0 0 104px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.sticker {
+  aspect-ratio: 1 / 1;
+  border-radius: 5px;
+  transition: background 0.35s;
+}
+
+.cube-readout {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+}
+
+.cube-time {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cube-scramble {
+  font-size: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.cube-actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cube-chip {
+  background: var(--bg);
+}
+
+.cube-toggle {
+  min-width: 116px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .f1l,
+  .rev,
+  .film {
+    animation: none;
+  }
+
+  .sticker {
+    transition: none;
+  }
+}
