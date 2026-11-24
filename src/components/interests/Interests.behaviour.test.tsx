@@ -33,14 +33,9 @@ function randomSequence(values: number[]) {
 describe('Interests cube card', () => {
   beforeEach(() => {
     vi.useFakeTimers();
-    // Testing Library's async wrapper (around every user-event call) drains with a
-    // setTimeout(0) and advances fake time only through a global `jest`; without one it
-    // waits forever under vitest fake timers. Point it at vi.
-    vi.stubGlobal('jest', { advanceTimersByTime: (ms: number) => vi.advanceTimersByTime(ms) });
   });
 
   afterEach(() => {
-    vi.unstubAllGlobals();
     vi.restoreAllMocks();
     vi.useRealTimers();
   });

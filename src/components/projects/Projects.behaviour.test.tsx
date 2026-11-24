@@ -8,16 +8,14 @@ import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Projects } from './Projects';
 
-// Testing Library's async wrapper advances only a global `jest` clock; point it at vitest's
-// fake timers so user-event clicks settle deterministically.
+// Fake timers keep user-event clicks deterministic; the `jest` clock that lets them settle
+// lives in vitest.setup.dom.ts.
 function useFakeClock() {
   vi.useFakeTimers();
-  vi.stubGlobal('jest', { advanceTimersByTime: vi.advanceTimersByTime.bind(vi) });
 }
 
 function restoreClock() {
   vi.useRealTimers();
-  vi.unstubAllGlobals();
 }
 
 function setup() {

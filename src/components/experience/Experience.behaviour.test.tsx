@@ -24,10 +24,8 @@ function setup() {
 
 describe('Experience accordion', () => {
   beforeEach(() => {
-    // shouldAdvanceTime: Testing Library's async wrapper around each user-event call waits
-    // on a real setTimeout(0) and only advances Jest's fake timers, so without it every
-    // click hangs under vitest fake timers even with advanceTimers set.
-    vi.useFakeTimers({ shouldAdvanceTime: true });
+    // User-event under fake timers works through the `jest` clock in vitest.setup.dom.ts.
+    vi.useFakeTimers();
   });
   afterEach(() => {
     vi.useRealTimers();

@@ -5,10 +5,7 @@
 // Timers are fake; sessionStorage and matchMedia are jsdom's or stubbed at the boundary.
 // Leaves to other layers: the server markup (markup pin src/testing/pins/top.txt), the
 // command table (src/terminal.test.ts) and the drawing of each state (HeroView.test.tsx).
-//
-// user-event under vitest fake timers: Testing Library's async wrapper waits on a
-// setTimeout(0) and advances only Jest's clock, so it hangs even with the advanceTimers
-// option. A global `jest` whose advanceTimersByTime is vitest's lets it advance our clock.
+// user-event runs under vitest fake timers through the `jest` clock in vitest.setup.dom.ts.
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -54,7 +51,6 @@ async function runTyped(user: ReturnType<typeof userEvent.setup>, command: strin
 describe('Hero', () => {
   beforeEach(() => {
     vi.useFakeTimers();
-    vi.stubGlobal('jest', { advanceTimersByTime: (ms: number) => vi.advanceTimersByTime(ms) });
     sessionStorage.clear();
     document.documentElement.dataset.intro = '';
   });
