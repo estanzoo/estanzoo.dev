@@ -1,0 +1,112 @@
+# Site tests: typecheck, unit, dom and build for the site.
+#
+# Why the path filter sits inside a job (`changes`) and not on the trigger:
+#   A trigger-level `paths:` filter starts nothing on an unrelated PR, so no
+#   status is reported and a required check waits forever. With the filter in
+#   a job, every PR gets an explicit result: an unrelated PR skips `test` and
+#   `site required` still reports green. A missing status then means only one
+#   thing: Actions never ran (merge conflict, outage).
+#
+# Why the aggregator (`site required`) uses `if: always()`:
+#   GitHub treats a skipped job as passed. With `!cancelled()` a cancelled run
+#   would skip the aggregator and the merge would see a pass. With `always()`
+#   the aggregator runs even when the run is cancelled or a job failed, and its
+#   jq check turns any cancelled or failed need into a red result.
+#   `site required` is the only job name branch protection should require.
+
+name: Site tests
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: site-tests-${{ github.ref }}
+  # Cancel a superseded run, but never a run on main: it is the record.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      # Push events always run the suite; pull requests run it when a path matches.
+      run: ${{ github.event_name != 'pull_request' || steps.filter.outputs.site == 'true' }}
+    steps:
+      - uses: dorny/paths-filter@v4
+        id: filter
+        if: github.event_name == 'pull_request'
+        with:
+          filters: |
+            site:
+              - 'src/**'
+              - 'mocks/**'
+              - 'scripts/**'
+              - 'tools/**'
+              - 'public/**'
+              - 'index.html'
+              - 'package*.json'
+              - '*.config.ts'
+              - 'tsconfig.json'
+              - '.nvmrc'
+              - '.github/workflows/**'
+
+  test:
+    needs: changes
+    if: needs.changes.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # Cheapest first, then the heavy build.
+      - run: npm run typecheck
+
+      # --- placeholder: 'lint' step goes here (est-dog rules task) ---
+
+      - run: npm run test:unit -- --reporter=default --reporter=junit --outputFile.junit=reports/unit.xml
+      - run: npm run test:dom -- --reporter=default --reporter=junit --outputFile.junit=reports/dom.xml
+      - run: npm run build
+
+      # --- placeholder: 'pins' step goes here (markup pins task; writes build/markup-pin) ---
+
+      # --- placeholder: 'screenshots' step goes here (screenshots task) ---
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: test-reports
+          path: reports/
+          if-no-files-found: ignore
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: markup-pin
+          path: build/markup-pin/
+          # Nothing writes build/markup-pin until the pins step lands.
+          if-no-files-found: ignore
+
+  required:
+    name: site required
+    needs: [changes, test]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          echo "$NEEDS" | jq -e '.changes.result == "success" and ([.[] | .result] | all(. == "success" or . == "skipped"))'
