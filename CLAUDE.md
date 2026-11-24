@@ -1,6 +1,4 @@
-# Project Instructions for AI Agents
-
-This file provides instructions and context for AI coding agents working on this project.
+@AGENTS.md
 
 <!-- BEGIN BEADS INTEGRATION v:1 profile:minimal hash:1105d646 -->
 ## Beads Issue Tracker
@@ -56,25 +54,3 @@ This protocol applies when ending a Beads implementation workflow. It is subordi
 - Do not commit or push without clear authority from the active profile or the current user request.
 - If a required sync or push is blocked, stop and report the exact command and error.
 <!-- END BEADS INTEGRATION -->
-
-
-## Build & Test
-
-Node version is pinned in `.nvmrc` (24). CI (`.github/workflows/ci.yml`) runs exactly this sequence:
-
-```bash
-npm ci              # clean install from package-lock.json
-npm run typecheck   # tsc --noEmit
-npm test            # vitest run
-npm run build       # client build + SSR build + prerender into dist/
-```
-
-`npm run dev` starts the Vite dev server. Site copy lives in `src/content.ts`.
-
-## Architecture Overview
-
-_Add a brief overview of your project architecture_
-
-## Conventions & Patterns
-
-_Add your project-specific conventions here_
