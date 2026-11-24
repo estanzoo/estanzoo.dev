@@ -17,7 +17,10 @@
     "screens": "tools/worktree-env.sh >/dev/null && node tools/screens/cli.mjs serve",
     "screens:list": "node tools/screens/cli.mjs list",
     "screens:render": "node tools/screens/cli.mjs render",
-    "screens:renderAll": "node tools/screens/cli.mjs renderAll"
+    "screens:renderAll": "node tools/screens/cli.mjs renderAll",
+    "screenshots": "tools/screenshots/docker.sh",
+    "screenshots:update": "tools/screenshots/docker.sh --update-snapshots=changed",
+    "screens:approve": "node tools/screenshots/approve.mjs"
   },
   "engines": {
     "node": ">=22.18"
@@ -30,6 +33,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "1.65.1",
     "@resvg/resvg-js": "^2.6.2",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^8.0.0",

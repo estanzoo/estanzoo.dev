@@ -19,3 +19,7 @@ build/
 
 # per-checkout ports (tools/worktree-env.sh)
 .env
+
+# playwright output (npm run screenshots)
+test-results/
+playwright-report/
