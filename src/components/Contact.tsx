@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { site } from '../content';
+import { contact, site } from '../content';
 import './Contact.css';
 
 type CopyState = '' | 'ok' | 'fail';
@@ -46,9 +46,9 @@ export function Contact() {
           <span className="accent" aria-hidden="true">
             $
           </span>{' '}
-          hq send ethan "hello"
+          {contact.prompt}
         </div>
-        <h2 className="contact-title">Want to get in touch?</h2>
+        <h2 className="contact-title">{contact.heading}</h2>
         <div className="contact-actions">
           <a className="contact-btn contact-mail" href={`mailto:${site.email}`}>
             {site.email}

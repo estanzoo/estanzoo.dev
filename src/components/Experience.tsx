@@ -4,20 +4,16 @@ import './Experience.css';
 
 const DEFAULT_OPEN = 'xplode';
 
-const werLabel =
-  `Relative word error rate: fine-tuned Whisper V3 is ${werChart.reduction}% lower ` +
-  `than the baseline, across ${werChart.languages} languages`;
-
 function WerChart({ open }: { open: boolean }) {
   return (
-    <div className="xp-chart" role="img" aria-label={werLabel}>
+    <div className="xp-chart" role="img" aria-label={werChart.summary}>
       <div className="xp-chart-row" aria-hidden="true">
-        <span>Whisper V3, baseline WER</span>
+        <span>{werChart.baselineLabel}</span>
         <span>100%</span>
       </div>
       <div className="xp-chart-base" aria-hidden="true" />
       <div className="xp-chart-row xp-chart-row-hi" aria-hidden="true">
-        <span>after LoRA fine-tuning, {werChart.languages} languages</span>
+        <span>{werChart.tunedLabel}</span>
         <span>−{werChart.reduction}%</span>
       </div>
       <div className="xp-chart-track" aria-hidden="true">

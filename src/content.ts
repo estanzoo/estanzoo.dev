@@ -170,7 +170,16 @@ export const jobs: Job[] = [
   },
 ];
 
-export const werChart = { reduction: 40.7, languages: 8 };
+const wer = { reduction: 40.7, languages: 8 };
+
+/** Bar chart under the Xplode role. The bar length is derived from `reduction`. */
+export const werChart = {
+  ...wer,
+  baselineLabel: 'Whisper V3, baseline WER',
+  tunedLabel: `after LoRA fine-tuning, ${wer.languages} languages`,
+  /** Screen-reader description of the whole chart. */
+  summary: `Relative word error rate: fine-tuned Whisper V3 is ${wer.reduction}% lower than the baseline, across ${wer.languages} languages`,
+};
 
 /** Interest cards. Replace the bracketed text when you're ready. */
 export const interests = {
@@ -178,4 +187,10 @@ export const interests = {
   f1: { kicker: '01 · watching and driving', title: 'F1 and sim racing', body: '[Team or driver you follow, your sim and rig, favourite track]' },
   films: { kicker: '02 · watching', title: 'Films', body: '[Favourite directors, recent watches, Letterboxd link]' },
   cubing: { kicker: '03 · solving', title: 'Speed cubing', body: '[Your events and personal bests]' },
+};
+
+export const contact = {
+  /** Terminal-style line above the heading (the `$` sigil is added by the component). */
+  prompt: 'hq send ethan "hello"',
+  heading: 'Want to get in touch?',
 };
