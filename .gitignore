@@ -16,3 +16,6 @@ dist-ssr
 
 # markup pin mismatches
 build/
+
+# per-checkout ports (tools/worktree-env.sh)
+.env
