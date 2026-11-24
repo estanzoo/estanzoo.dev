@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#0F1216"/>
+  <!-- '~/' drawn as strokes so it stays crisp at 16px and needs no font -->
+  <g fill="none" stroke="#FFB454" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5.5 18.5c1.2-2.4 2.8-3 4.4-1.8s3.2.6 4.4-1.8"/>
+    <path d="M18.5 25 26 7"/>
+  </g>
+</svg>
