@@ -60,7 +60,7 @@ describe('loadMock', () => {
 describe('renderMock', () => {
   it('renders every real mock through its section View', () => {
     for (const ref of listMocks(MOCKS)) {
-      expect(renderMock(screens, ref, loadMock(MOCKS, ref)), ref.name).toContain('<section');
+      expect(renderMock(screens, ref, loadMock(MOCKS, ref)), ref.name).toMatch(/^<(section|header) /);
     }
   });
 
@@ -76,7 +76,8 @@ describe('renderMock', () => {
 
   it('lists each schema issue with its vm path', () => {
     const ref = { section: 'contact', state: 'bad', name: 'contact/bad', file: 'mocks/contact/bad.json' };
-    const vm = { ...(loadMock(MOCKS, listMocks(MOCKS)[0]).vm as object), extra: 1, mail: { href: 'h' } };
+    const idle = listMocks(MOCKS).find((m) => m.name === 'contact/idle')!;
+    const vm = { ...(loadMock(MOCKS, idle).vm as object), extra: 1, mail: { href: 'h' } };
     expect(() => renderMock(screens, ref, { vm })).toThrow(/\n {2}vm\.mail\.label: .*\n {2}vm: Unrecognized key: "extra"$/);
   });
 

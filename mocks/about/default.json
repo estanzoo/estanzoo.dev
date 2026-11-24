@@ -1,0 +1,28 @@
+{
+  "_scenario": "A visitor scrolls past the hero and reads who Ethan is, the key facts and where to find him.",
+  "vm": {
+    "label": "# about",
+    "lead": {
+      "before": "I’m currently a full stack developer at ",
+      "org": {
+        "href": "#experience",
+        "label": "Thri5"
+      },
+      "after": ", shipping features from database to UI on a Kotlin and Spring Boot retail operations platform."
+    },
+    "body": "Before that I fine-tuned speech models at Xplode with AI and wrote Go services at StepFun in Shanghai. Lately I’ve been most interested in how several coding agents can work on one codebase without stepping on each other, which is what hq is for.",
+    "facts": [
+      { "label": "school", "value": "BSE Software Engineering, UWaterloo, 2024 — 2029" },
+      { "label": "based", "value": "Toronto / Waterloo, Ontario" },
+      { "label": "writes", "value": "C++, Java, Python, C, TypeScript, Elixir, Swift, Scala, SQL" }
+    ],
+    "links": {
+      "label": "links",
+      "items": [
+        { "kind": "link", "href": "https://github.com/estanzoo", "label": "github" },
+        { "kind": "separator", "text": " · " },
+        { "kind": "link", "href": "https://linkedin.com/in/estanzoo", "label": "linkedin" }
+      ]
+    }
+  }
+}

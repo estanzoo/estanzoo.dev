@@ -1,6 +1,6 @@
-import { Header } from './components/Header';
+import { Header } from './components/header/Header';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
+import { About } from './components/about/About';
 import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
 import { Interests } from './components/Interests';

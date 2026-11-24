@@ -1,0 +1,17 @@
+{
+  "_scenario": "A visitor opens the site and sees the handle and the section nav at the top of the page.",
+  "vm": {
+    "handle": {
+      "href": "#top",
+      "label": "~/ethan-zhu"
+    },
+    "navLabel": "Sections",
+    "nav": [
+      { "href": "#about", "label": "about" },
+      { "href": "#projects", "label": "projects" },
+      { "href": "#experience", "label": "experience" },
+      { "href": "#interests", "label": "interests" },
+      { "href": "#contact", "label": "contact" }
+    ]
+  }
+}
