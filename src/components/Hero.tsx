@@ -72,10 +72,17 @@ export function Hero() {
   const [s1, setS1] = useState<Status>(init.s1);
   const [s2, setS2] = useState<Status>(init.s2);
   const [lines, setLines] = useState<Record<LogTarget, Line[]>>({ log: init.log, a1: init.a1, a2: init.a2 });
+  // Flips true in the same batch as the intro's first state reset, so the
+  // pre-hydration guard (<html data-intro>) is only lifted once the empty
+  // boot state has committed and the finished SSR markup never flashes.
+  const [mounted, setMounted] = useState(false);
 
   const timers = useRef<number[]>([]);
   const scrambleIv = useRef<number | null>(null);
   const reduce = useRef(false);
+  // True while the boot sequence is running; survives StrictMode's simulated
+  // unmount/remount so an interrupted intro is restarted rather than stalled.
+  const playing = useRef(false);
   const frameRef = useRef<HTMLDivElement>(null);
   const raf = useRef<number | null>(null);
   const pointer = useRef({ x: 0, y: 0 });
@@ -147,6 +154,7 @@ export function Hero() {
 
   const finish = () => {
     stopAll();
+    playing.current = false;
     const f = finishedState();
     setName(f.name);
     setCmd('');
@@ -159,6 +167,7 @@ export function Hero() {
 
   const boot = () => {
     stopAll();
+    playing.current = true;
     setLines({ log: [], a1: [], a2: [] });
     setS1('idle');
     setS2('idle');
@@ -178,6 +187,7 @@ export function Hero() {
       at(3100, () => {
         push('log', { kind: 'ok', text: 'both agents reported. your turn: type help' });
         setBooted(true);
+        playing.current = false;
       });
     });
   };
@@ -210,14 +220,18 @@ export function Hero() {
     } catch {
       /* storage unavailable: play the intro */
     }
-    if (!reduce.current && !seen) boot();
-    delete document.documentElement.dataset.intro;
+    if (!reduce.current && (!seen || playing.current)) boot();
+    setMounted(true);
     return () => {
       stopAll();
       if (raf.current) cancelAnimationFrame(raf.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (mounted) delete document.documentElement.dataset.intro;
+  }, [mounted]);
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = frameRef.current;
@@ -239,8 +253,10 @@ export function Hero() {
     }
   };
 
-  const n1 = name.slice(0, 5);
-  const n2 = name.slice(6);
+  // Split on the space in the real name; the scramble keeps spaces in place.
+  const split = site.name.indexOf(' ');
+  const n1 = split < 0 ? name : name.slice(0, split);
+  const n2 = split < 0 ? '' : name.slice(split + 1);
 
   return (
     <section id="top" className="section hero">

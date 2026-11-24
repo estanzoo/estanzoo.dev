@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      try {
+        if (!sessionStorage.getItem('intro-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.dataset.intro = '';
+      } catch (e) {}
+    </script>
     <title>Ethan Zhu</title>
     <meta name="description" content="Ethan Zhu — software engineering student at the University of Waterloo. Backends, speech models and tooling for teams of coding agents." />
     <meta name="theme-color" content="#0F1216" />
