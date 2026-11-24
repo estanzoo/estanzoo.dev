@@ -1,0 +1,132 @@
+/* Experience accordion (ported from Panes.dc.html #experience). */
+.xp-label {
+  margin-bottom: 12px;
+}
+
+.xp-job {
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 0 16px;
+  margin: 0 -16px;
+  transition: background 0.2s;
+}
+.xp-job:hover {
+  background: var(--card);
+}
+
+.xp-head {
+  width: 100%;
+  min-height: 44px;
+  padding: 22px 0;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 40px;
+}
+
+.xp-when,
+.xp-where {
+  flex: 0 0 200px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.xp-title {
+  flex: 1 1 380px;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.xp-org {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.xp-sign {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.xp-grow {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ease-out-back);
+}
+.xp-grow.is-open {
+  grid-template-rows: 1fr;
+}
+.xp-clip {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.xp-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  padding: 0 0 28px;
+}
+
+.xp-main {
+  flex: 1 1 380px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.xp-points {
+  margin: 0;
+  padding: 0 0 0 18px;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--body);
+}
+
+/* WER chart */
+.xp-chart {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.xp-chart-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.xp-chart-row-hi {
+  color: var(--fg);
+}
+.xp-chart-base {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--line-hover);
+}
+.xp-chart-track {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--line);
+}
+.xp-chart-bar {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--accent);
+  transition: width 1.2s var(--ease-out-back) 0.25s;
+}
