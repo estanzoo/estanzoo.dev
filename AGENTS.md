@@ -63,6 +63,10 @@ estanzoo.dev is a personal site: React 18, Vite 6, TypeScript, npm and plain CSS
 
 Builds and tests of hq workers go through build-slot. Run every build, test, lint and typecheck command as `build-slot <your-session-name> -- <command>`, for example `build-slot estsite-20-2 -- npx vitest run src/terminal.test.ts`. `build-slot --status` shows who builds and who waits.
 
+### Review
+
+- A multi-agent review of a branch is the `/cr` skill (`.claude/skills/cr/SKILL.md`). Only the owner starts it.
+
 ### Commit messages
 
 - A commit that touches `src/` starts with a type tag:
