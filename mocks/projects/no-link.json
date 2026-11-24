@@ -1,0 +1,152 @@
+{
+  "_scenario": "NoteWorks has no link yet, so its foot shows the muted [add link] placeholder instead of a link.",
+  "vm": {
+    "heading": "# projects",
+    "filterGroupLabel": "Filter projects",
+    "filters": [
+      {
+        "id": "all",
+        "label": "all",
+        "pressed": true
+      },
+      {
+        "id": "ai",
+        "label": "agents + ai",
+        "pressed": false
+      },
+      {
+        "id": "ios",
+        "label": "ios",
+        "pressed": false
+      },
+      {
+        "id": "backend",
+        "label": "backend",
+        "pressed": false
+      }
+    ],
+    "cards": [
+      {
+        "id": "hq",
+        "name": "hq",
+        "date": "Oct 2026",
+        "desc": "An Elixir/OTP service that coordinates teams of Claude Code agents working in parallel, and lets them message each other mid-task.",
+        "tags": "Elixir · OTP · Claude Code · Bash",
+        "detailsId": "project-hq-details",
+        "points": [
+          "Every agent is independently supervised.",
+          "Messages queue while an agent is busy and survive restarts.",
+          "A separate git worktree for every task prevents conflicts between parallel agents.",
+          "The engineer can talk to any sub-agent directly."
+        ],
+        "details": {
+          "kind": "open",
+          "toggleLabel": "− less",
+          "expanded": true,
+          "dataOpen": ""
+        },
+        "toggleContext": "about hq",
+        "link": {
+          "kind": "link",
+          "href": "https://github.com/estanzoo/hq",
+          "label": "github.com/estanzoo/hq"
+        }
+      },
+      {
+        "id": "noteworks",
+        "name": "NoteWorks",
+        "date": "Mar 2026",
+        "desc": "A native iPad note editor in SwiftUI on a layered serverless Supabase backend.",
+        "tags": "Swift · TypeScript · PostgreSQL · Supabase",
+        "detailsId": "project-noteworks-details",
+        "points": [
+          "Custom PKCanvasView integration with gesture coordination between zoom/pan and drawing.",
+          "Per-page ink persistence, with overlay layers for text and image annotations.",
+          "Edge functions handle business logic, validation and file orchestration; AI API calls go through a secure server-side pipeline.",
+          "Apple, Google and email OTP sign-in, plus GitHub Actions CI for schema migrations and TypeScript type generation."
+        ],
+        "details": {
+          "kind": "closed",
+          "toggleLabel": "+ details",
+          "expanded": false,
+          "dataOpen": null
+        },
+        "toggleContext": "about NoteWorks",
+        "link": {
+          "kind": "placeholder",
+          "label": "[add link]"
+        }
+      },
+      {
+        "id": "ring",
+        "name": "Ring or Ping",
+        "date": "Jan 2025",
+        "desc": "An iOS alarm that alerts your whole friend group if you snooze or stop it without getting out of bed.",
+        "tags": "Swift · Python · Django · Nginx · Gunicorn",
+        "detailsId": "project-ring-details",
+        "points": [
+          "Built at UofTHacks 12.",
+          "iOS app written in Swift with personalised alarms.",
+          "Django REST framework backend deployed on Amazon EC2."
+        ],
+        "details": {
+          "kind": "closed",
+          "toggleLabel": "+ details",
+          "expanded": false,
+          "dataOpen": null
+        },
+        "toggleContext": "about Ring or Ping",
+        "link": {
+          "kind": "link",
+          "href": "https://github.com/estanzoo/Ring-or-Ping",
+          "label": "github.com/estanzoo/Ring-or-Ping"
+        }
+      },
+      {
+        "id": "gnostic",
+        "name": "Gnostic",
+        "date": "Aug 2023",
+        "desc": "A Chrome extension that pulls your Notion notes and turns them into flashcards.",
+        "tags": "Notion API · OpenAI · Flask",
+        "detailsId": "project-gnostic-details",
+        "points": [
+          "Winner of Most Innovative Project at Ignition Hacks 2023.",
+          "Fetches notes through the Notion API and generates flashcards with OpenAI."
+        ],
+        "details": {
+          "kind": "closed",
+          "toggleLabel": "+ details",
+          "expanded": false,
+          "dataOpen": null
+        },
+        "toggleContext": "about Gnostic",
+        "link": {
+          "kind": "link",
+          "href": "https://github.com/Trentiumz/IgnitionHacks2023",
+          "label": "github.com/Trentiumz/IgnitionHacks2023"
+        }
+      }
+    ],
+    "more": {
+      "label": "also on github:",
+      "repos": [
+        {
+          "href": "https://github.com/subtotechnoblade/Grok_Alpha_Zero",
+          "label": "Grok_Alpha_Zero (Python)"
+        },
+        {
+          "href": "https://github.com/estanzoo/RuneVault",
+          "label": "RuneVault (C++)"
+        },
+        {
+          "href": "https://github.com/estanzoo/MoodLens",
+          "label": "MoodLens (Python)"
+        }
+      ],
+      "all": {
+        "href": "https://github.com/estanzoo?tab=repositories",
+        "label": "all repositories"
+      }
+    }
+  }
+}
