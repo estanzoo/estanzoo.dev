@@ -1,0 +1,146 @@
+/* Projects section (#projects). Shared tokens/classes come from global.css. */
+
+.projects-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 20px;
+}
+
+.projects-head .section-label {
+  margin: 0;
+}
+
+.projects-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.project-card {
+  flex: 1 1 440px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 28px 16px;
+}
+
+.project-card[data-dim] {
+  opacity: 0.25;
+}
+
+.project-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.project-title h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.project-date,
+.project-tags {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.project-desc {
+  color: var(--body);
+}
+
+/* Expandable details: grid-template-rows 0fr -> 1fr. */
+.project-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s var(--ease-out-back);
+}
+
+.project-details[data-open] {
+  grid-template-rows: 1fr;
+}
+
+.project-details-inner {
+  overflow: hidden;
+  min-height: 0;
+  /* Hide collapsed content from assistive tech once the collapse finishes. */
+  visibility: hidden;
+  transition: visibility 0s 0.4s;
+}
+
+.project-details[data-open] .project-details-inner {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.project-details ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 0 4px 18px;
+  border-top: 1px solid var(--line);
+  color: var(--body);
+  font-size: 15px;
+}
+
+.project-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.project-toggle {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+}
+
+.project-link,
+.projects-more a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.project-nolink {
+  color: var(--muted);
+}
+
+.projects-more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 28px;
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-details-inner {
+    transition: none;
+  }
+}
