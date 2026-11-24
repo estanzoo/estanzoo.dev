@@ -1,0 +1,73 @@
+{
+  "_scenario": "The visitor closed the open role; every role shows only its header.",
+  "vm": {
+    "rows": [
+      {
+        "when": "Sep — Dec 2026",
+        "role": "Full Stack Developer",
+        "org": "Thri5 Inc.",
+        "sign": "+",
+        "expanded": false,
+        "panel": {
+          "kind": "closed",
+          "id": "job-thri5-panel",
+          "where": "Toronto, Ontario",
+          "points": [
+            "Production features from database to UI on a Kotlin, Spring Boot and PostgreSQL retail operations platform.",
+            "AI-assisted development workflows with Claude Code, running specialised sub-agents in parallel through graph-based execution loops.",
+            "Code quality standards for the Kotlin mobile apps: automated testing, structured reviews, typed pages and ViewModels."
+          ],
+          "chart": {
+            "kind": "none"
+          }
+        }
+      },
+      {
+        "when": "Jan — Apr 2026",
+        "role": "Machine Learning Engineer",
+        "org": "Xplode with AI",
+        "sign": "+",
+        "expanded": false,
+        "panel": {
+          "kind": "closed",
+          "id": "job-xplode-panel",
+          "where": "Toronto, Ontario",
+          "points": [
+            "LoRA fine-tuning of OpenAI’s Whisper V3, reducing WER by 40.7% across 8 languages.",
+            "Audio language ID with a fine-tuned XLS-R and an XLM-based transformer.",
+            "Backend of a FastAPI service for low-latency streaming TTS and translation over WebSockets; fine-tuned Piper TTS with custom phonemizers."
+          ],
+          "chart": {
+            "kind": "chart",
+            "summary": "Relative word error rate: fine-tuned Whisper V3 is 40.7% lower than the baseline, across 8 languages",
+            "baselineLabel": "Whisper V3, baseline WER",
+            "baselineValue": "100%",
+            "tunedLabel": "after LoRA fine-tuning, 8 languages",
+            "tunedValue": "−40.7%",
+            "barWidth": "100%"
+          }
+        }
+      },
+      {
+        "when": "May — Aug 2025",
+        "role": "Backend Developer",
+        "org": "StepFun, DeepEat team",
+        "sign": "+",
+        "expanded": false,
+        "panel": {
+          "kind": "closed",
+          "id": "job-stepfun-panel",
+          "where": "Shanghai, China",
+          "points": [
+            "Go backend for an iOS app on a Tencent RPC service, exposing new endpoints for the frontend.",
+            "Modified preorder tree traversal for storing and querying hierarchical data, with GORM and MongoDB.",
+            "Semantic search using vector embeddings, integrating StepFun’s LLM with a public data source."
+          ],
+          "chart": {
+            "kind": "none"
+          }
+        }
+      }
+    ]
+  }
+}

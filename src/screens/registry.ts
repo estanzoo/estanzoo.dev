@@ -9,6 +9,8 @@ import { headerVmSchema } from '../components/header/headerVm';
 import { HeaderView } from '../components/header/HeaderView';
 import { projectsVmSchema } from '../components/projects/projectsVm';
 import { ProjectsView } from '../components/projects/ProjectsView';
+import { experienceVmSchema } from '../components/experience/experienceVm';
+import { ExperienceView } from '../components/experience/ExperienceView';
 import { defineScreen } from './defineScreen';
 import type { Screen } from './defineScreen';
 
@@ -17,4 +19,5 @@ export const screens: Screen[] = [
   defineScreen({ section: 'about', schema: aboutVmSchema, View: AboutView }),
   defineScreen({ section: 'contact', schema: contactVmSchema, View: ContactView }),
   defineScreen({ section: 'projects', schema: projectsVmSchema, View: ProjectsView }),
+  defineScreen({ section: 'experience', schema: experienceVmSchema, View: ExperienceView }),
 ];
