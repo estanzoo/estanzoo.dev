@@ -17,7 +17,8 @@
     "screens": "tools/worktree-env.sh >/dev/null && node tools/screens/cli.mjs serve",
     "screens:list": "node tools/screens/cli.mjs list",
     "screens:render": "node tools/screens/cli.mjs render",
-    "screens:renderAll": "node tools/screens/cli.mjs renderAll"
+    "screens:renderAll": "node tools/screens/cli.mjs renderAll",
+    "render:diff": "tools/render-diff.sh"
   },
   "engines": {
     "node": ">=22.18"
