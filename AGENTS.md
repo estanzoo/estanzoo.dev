@@ -45,19 +45,33 @@ estanzoo.dev is a personal site: React 18, Vite 6, TypeScript, npm and plain CSS
 
 - Every behaviour change carries tests. Every commit is tested before it is pushed.
 - Write the test first: red, check that it is red, green, check that it is green, then refactor. Use `superpowers:test-driven-development` when it is installed.
-- Node is pinned in `.nvmrc` (24). The commands that exist today:
+- Node is pinned in `.nvmrc` (24). `npm ci` also runs `prepare`, which points git at the committed `hooks/`.
 
-  | Command | What it checks |
+  | Command | What it checks or does |
   |---|---|
-  | `npm ci` | Clean install from `package-lock.json` |
+  | `npm ci` | Clean install from `package-lock.json`. Run it first in every new worktree. |
   | `npm run typecheck` | `tsc --noEmit` |
-  | `npm test` | `vitest run`, all unit tests |
+  | `npm run lint` | ESLint with the project rules in `tools/eslint-rules/` (content boundary, SSR-safe render, design tokens, logic-free views) |
+  | `npm test` | All Vitest projects: `unit` (node) and `dom` (jsdom). Includes markup pins, mock contract and coverage, rule self-tests. |
+  | `npm run test:unit` / `npm run test:dom` | One Vitest project |
   | `npx vitest run <file>` | One test file, for the tight loop |
   | `npm run build` | Client build, SSR build and prerender into `dist/` |
-  | `npm run dev` | The Vite dev server, for hands-on checks |
+  | `npm run pins:update` | Rewrite the markup pins in `src/testing/pins/`. Only for a deliberate, approved output change. |
+  | `npm run screens` | Screen renderer: scenario index of every mock on `SCREENS_PORT` |
+  | `npm run screens:list` / `screens:render -- <section>/<state>` / `screens:renderAll` | List mocks, or render them to `build/screens/` |
+  | `npm run render:diff -- [base]` | Render every mock at a base commit and in the working tree, then compare. Exit 0 same, 1 changed, 2 cannot render. Do not wrap it in build-slot. |
+  | `npm run screenshots` | Playwright screenshots of every mock state at 1440 and 390, in the Linux Playwright Docker image (needs `colima start`) |
+  | `npm run screenshots:update` | Regenerate changed baselines in the same image. The owner approves new baselines. |
+  | `npm run screens:approve` | Write `build/screens/approve.html` for the owner's approval |
+  | `npm run dev` | The Vite dev server on this checkout's `DEV_PORT`. Prefer the `dev-server` skill. |
 
-  Later tasks add their own scripts (lint, screen renderer, markup pins, screenshots). Each task that adds a script adds it to this table.
-- CI (`.github/workflows/ci.yml`) runs `npm ci`, `npm run typecheck`, `npm test` and `npm run build`. Run the same gates before you report done.
+- CI (`.github/workflows/site-tests.yml`) runs typecheck, lint, unit, dom, build, pins and screenshots, and checks every commit message. Its `site required` job is the only required check. Run the same gates before you report done.
+
+### Local environment
+
+- `tools/worktree-env.sh` writes this checkout's `.env` with `DEV_PORT`, `PREVIEW_PORT` and `SCREENS_PORT`, derived from the checkout directory name. Never copy `.env` between checkouts. A copied file carries the other checkout's ports.
+- Start the dev server with the `dev-server` skill (`.claude/skills/dev-server/SKILL.md`). It never touches another checkout's server.
+- Tests that run git must drop every `GIT_*` variable from the child environment. Inside a git hook, git exports `GIT_DIR` and `GIT_INDEX_FILE`, and a temporary test repository then writes into the real one.
 
 ### Build slots
 
@@ -74,6 +88,7 @@ Builds and tests of hq workers go through build-slot. Run every build, test, lin
   - `[BUG]` for a fix.
 - A commit that does not touch `src/` uses a short plain subject with no tag.
 - The red run goes in the "Evidence" section of the PR body as the "Before" evidence: the command and the first failure line.
+- `hooks/commit-msg` enforces the tag locally. `hooks/pre-commit` runs lint, typecheck and the related tests on staged files. Both also run the beads hooks. CI checks every pushed commit message again.
 
 ### Non-interactive shell flags
 
@@ -93,6 +108,8 @@ Some shells alias `cp`, `mv` and `rm` to interactive mode, and the agent then wa
 - **Logic-free views.** A View branches only through `<Render vm>` and `<Optional value>`.
 - **Copy.** Only `App.tsx` and containers import `src/content.ts`.
 - **Rules as tests.** Each architecture rule is an ESLint custom rule. Each rule has a `RuleTester` self-test that proves it still catches its own bad example.
+- **Mocks.** Every visual state of a section has a mock in `mocks/<section>/<state>.json`, registered in `src/screens/registry.ts`. The contract test fails on a mock that does not fit its schema, a union variant with no mock, and an optional or boolean field that the mocks show only one way.
+- **Pins and screenshots.** A refactor keeps the markup pins byte-identical. A visible change updates the pins and the screenshot baselines, and the owner approves the new baselines.
 
 ### Documentation
 

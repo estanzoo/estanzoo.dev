@@ -23,3 +23,6 @@ build/
 # playwright output (npm run screenshots)
 test-results/
 playwright-report/
+
+# CI junit reports
+reports/
