@@ -13,3 +13,6 @@ dist-ssr
 
 # hq worktrees
 .worktree/
+
+# per-checkout ports (tools/worktree-env.sh)
+.env
