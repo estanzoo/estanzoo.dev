@@ -60,13 +60,16 @@ This protocol applies when ending a Beads implementation workflow. It is subordi
 
 ## Build & Test
 
-_Add your build and test commands here_
+Node version is pinned in `.nvmrc` (24). CI (`.github/workflows/ci.yml`) runs exactly this sequence:
 
 ```bash
-# Example:
-# npm install
-# npm test
+npm ci              # clean install from package-lock.json
+npm run typecheck   # tsc --noEmit
+npm test            # vitest run
+npm run build       # client build + SSR build + prerender into dist/
 ```
+
+`npm run dev` starts the Vite dev server. Site copy lives in `src/content.ts`.
 
 ## Architecture Overview
 
