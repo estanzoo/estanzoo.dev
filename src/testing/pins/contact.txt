@@ -1,0 +1,20 @@
+<section class="contact rv section" id="contact">
+  <div class="contact-box">
+    <div class="contact-cmd mono">
+      <span aria-hidden="true" class="accent">
+        $
+      hq send ethan "hello"
+    <h2 class="contact-title">
+      Want to get in touch?
+    <div class="contact-actions">
+      <a class="contact-btn contact-mail" href="mailto:hello@estanzoo.dev">
+        hello@estanzoo.dev
+      <button class="chip contact-btn contact-copy" type="button">
+        <span aria-live="polite">
+          copy email
+      <a class="chip contact-btn" href="https://github.com/estanzoo">
+        GitHub
+      <a class="chip contact-btn" href="https://linkedin.com/in/estanzoo">
+        LinkedIn
+  <p class="contact-foot mono">
+    © 2026 Ethan Zhu

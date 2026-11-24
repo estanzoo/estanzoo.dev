@@ -12,7 +12,8 @@
     "test:related": "vitest related --run",
     "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
-    "og": "node scripts/og.mjs"
+    "og": "node scripts/og.mjs",
+    "pins:update": "PINS_UPDATE=1 vitest run --project unit src/testing/pins.test.ts"
   },
   "engines": {
     "node": ">=22.18"
@@ -35,6 +36,7 @@
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^4.7.0",
     "jsdom": "^29.1.1",
+    "parse5": "^8.1.1",
     "typescript": "^5.9.3",
     "vite": "^6.4.6",
     "vitest": "^5.1.1"

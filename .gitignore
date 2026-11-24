@@ -13,3 +13,6 @@ dist-ssr
 
 # hq worktrees
 .worktree/
+
+# markup pin mismatches
+build/

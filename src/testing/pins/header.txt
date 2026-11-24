@@ -1,0 +1,14 @@
+<header class="site-header">
+  <a class="mono site-handle" href="#top">
+    ~/ethan-zhu
+  <nav aria-label="Sections" class="mono site-nav">
+    <a class="nl" href="#about">
+      about
+    <a class="nl" href="#projects">
+      projects
+    <a class="nl" href="#experience">
+      experience
+    <a class="nl" href="#interests">
+      interests
+    <a class="nl" href="#contact">
+      contact

@@ -1,0 +1,86 @@
+<section class="hero section" id="top">
+  <div class="hero-frame">
+    <div aria-hidden="true" class="hero-dots">
+    <div class="hero-bar">
+      <span>
+        hq · session: portfolio
+      <div class="hero-bar-right">
+        <span class="hero-panes">
+          <span aria-hidden="true" class="dot live">
+          3 panes
+        <button class="chip chip-ghost">
+          replay intro
+    <div class="hero-panes-row">
+      <div class="is-focus pane pane-lead">
+        <button aria-pressed="true" class="pane-label">
+          [0] lead
+        <h1 aria-label="Ethan Zhu" class="hero-name">
+          <span aria-hidden="true">
+            Ethan
+          <span aria-hidden="true" class="accent">
+            Zhu
+        <p class="hero-tagline">
+          Software engineering student at the University of Waterloo. I build backends, speech models and tooling for teams of coding agents.
+        <div aria-live="polite" class="hero-log intro-hide">
+          <div class="ln ln-cmd">
+            $ whoami
+          <div class="ln ln-cmd">
+            $ hq dispatch --team portfolio
+          <div class="ln ln-out">
+            dispatched 2 agents, 2 worktrees
+          <div class="ln ln-ok">
+            both agents reported. your turn: type help
+        <div class="prompt">
+          <label class="prompt-sigil" for="cmdin">
+            $
+          <input aria-label="Type a command and press Enter" autocomplete="off" class="prompt-input" id="cmdin" maxlength="60" placeholder="type help and press enter" spellcheck="false" type="text" value="">
+          <button aria-label="Run command" class="prompt-run">
+            <svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+              <path d="M20 5v8H6">
+              <path d="M10 9l-4 4 4 4">
+        <div class="hero-chips">
+          <button class="chip">
+            help
+          <button class="chip">
+            projects
+          <button class="chip">
+            experience
+          <button class="chip">
+            stack
+          <button class="chip">
+            contact
+      <div class="hero-agents">
+        <div class="pane pane-agent">
+          <div class="pane-head">
+            <button aria-pressed="false" class="pane-label">
+              [1] agent/projects
+            <span class="pane-status">
+              <span aria-hidden="true" class="dot status-done">
+              done
+          <div aria-live="polite" class="intro-hide pane-lines">
+            <div class="ln ln-dim">
+              ← lead: what has he shipped?
+            <div class="ln ln-out">
+              → lead: hq, NoteWorks, Ring or Ping, Gnostic
+            <div class="ln ln-ok">
+              done · 4 projects
+              <a href="#projects">
+                open ↓
+        <div class="pane pane-agent">
+          <div class="pane-head">
+            <button aria-pressed="false" class="pane-label">
+              [2] agent/experience
+            <span class="pane-status">
+              <span aria-hidden="true" class="dot status-done">
+              done
+          <div aria-live="polite" class="intro-hide pane-lines">
+            <div class="ln ln-dim">
+              ← lead: where has he worked?
+            <div class="ln ln-out">
+              → lead: Thri5, Xplode with AI, StepFun
+            <div class="ln ln-out">
+              → agent/projects: mention the 40.7% WER drop
+            <div class="ln ln-ok">
+              done · 3 roles
+              <a href="#experience">
+                open ↓

@@ -1,0 +1,141 @@
+<section class="rv section" id="projects">
+  <div class="projects-head">
+    <h2 class="section-label">
+      # projects
+    <div aria-label="Filter projects" class="projects-filters" role="group">
+      <button aria-pressed="true" class="chip chip-pill" type="button">
+        all
+      <button aria-pressed="false" class="chip chip-pill" type="button">
+        agents + ai
+      <button aria-pressed="false" class="chip chip-pill" type="button">
+        ios
+      <button aria-pressed="false" class="chip chip-pill" type="button">
+        backend
+  <div class="projects-grid">
+    <article class="card project-card">
+      <div class="project-title">
+        <h3>
+          hq
+        <span class="project-date">
+          Oct 2026
+      <p class="project-desc">
+        An Elixir/OTP service that coordinates teams of Claude Code agents working in parallel, and lets them message each other mid-task.
+      <div class="project-tags">
+        Elixir · OTP · Claude Code · Bash
+      <div class="grow project-details" data-open="" id="project-hq-details">
+        <div class="project-details-inner">
+          <ul>
+            <li>
+              Every agent is independently supervised.
+            <li>
+              Messages queue while an agent is busy and survive restarts.
+            <li>
+              A separate git worktree for every task prevents conflicts between parallel agents.
+            <li>
+              The engineer can talk to any sub-agent directly.
+      <div class="project-foot">
+        <button aria-controls="project-hq-details" aria-expanded="true" class="project-toggle" type="button">
+          − less
+          <span class="sr-only">
+            about hq
+        <a class="project-link" href="https://github.com/estanzoo/hq">
+          github.com/estanzoo/hq
+          <span aria-hidden="true">
+            ↗
+    <article class="card project-card">
+      <div class="project-title">
+        <h3>
+          NoteWorks
+        <span class="project-date">
+          Mar 2026
+      <p class="project-desc">
+        A native iPad note editor in SwiftUI on a layered serverless Supabase backend.
+      <div class="project-tags">
+        Swift · TypeScript · PostgreSQL · Supabase
+      <div class="grow project-details" id="project-noteworks-details">
+        <div class="project-details-inner">
+          <ul>
+            <li>
+              Custom PKCanvasView integration with gesture coordination between zoom/pan and drawing.
+            <li>
+              Per-page ink persistence, with overlay layers for text and image annotations.
+            <li>
+              Edge functions handle business logic, validation and file orchestration; AI API calls go through a secure server-side pipeline.
+            <li>
+              Apple, Google and email OTP sign-in, plus GitHub Actions CI for schema migrations and TypeScript type generation.
+      <div class="project-foot">
+        <button aria-controls="project-noteworks-details" aria-expanded="false" class="project-toggle" type="button">
+          + details
+          <span class="sr-only">
+            about NoteWorks
+        <a class="project-link" href="https://noteworks.studio">
+          noteworks.studio
+          <span aria-hidden="true">
+            ↗
+    <article class="card project-card">
+      <div class="project-title">
+        <h3>
+          Ring or Ping
+        <span class="project-date">
+          Jan 2025
+      <p class="project-desc">
+        An iOS alarm that alerts your whole friend group if you snooze or stop it without getting out of bed.
+      <div class="project-tags">
+        Swift · Python · Django · Nginx · Gunicorn
+      <div class="grow project-details" id="project-ring-details">
+        <div class="project-details-inner">
+          <ul>
+            <li>
+              Built at UofTHacks 12.
+            <li>
+              iOS app written in Swift with personalised alarms.
+            <li>
+              Django REST framework backend deployed on Amazon EC2.
+      <div class="project-foot">
+        <button aria-controls="project-ring-details" aria-expanded="false" class="project-toggle" type="button">
+          + details
+          <span class="sr-only">
+            about Ring or Ping
+        <a class="project-link" href="https://github.com/estanzoo/Ring-or-Ping">
+          github.com/estanzoo/Ring-or-Ping
+          <span aria-hidden="true">
+            ↗
+    <article class="card project-card">
+      <div class="project-title">
+        <h3>
+          Gnostic
+        <span class="project-date">
+          Aug 2023
+      <p class="project-desc">
+        A Chrome extension that pulls your Notion notes and turns them into flashcards.
+      <div class="project-tags">
+        Notion API · OpenAI · Flask
+      <div class="grow project-details" id="project-gnostic-details">
+        <div class="project-details-inner">
+          <ul>
+            <li>
+              Winner of Most Innovative Project at Ignition Hacks 2023.
+            <li>
+              Fetches notes through the Notion API and generates flashcards with OpenAI.
+      <div class="project-foot">
+        <button aria-controls="project-gnostic-details" aria-expanded="false" class="project-toggle" type="button">
+          + details
+          <span class="sr-only">
+            about Gnostic
+        <a class="project-link" href="https://github.com/Trentiumz/IgnitionHacks2023">
+          github.com/Trentiumz/IgnitionHacks2023
+          <span aria-hidden="true">
+            ↗
+  <div class="projects-more">
+    <span>
+      also on github:
+    <a href="https://github.com/subtotechnoblade/Grok_Alpha_Zero">
+      Grok_Alpha_Zero (Python)
+    <a href="https://github.com/estanzoo/RuneVault">
+      RuneVault (C++)
+    <a href="https://github.com/estanzoo/MoodLens">
+      MoodLens (Python)
+    <a href="https://github.com/estanzoo?tab=repositories">
+      all repositories
+      <span aria-hidden="true">
+        ↗

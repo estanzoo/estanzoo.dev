@@ -1,0 +1,36 @@
+<section class="about rv section" id="about">
+  <div class="about-text">
+    <h2 class="section-label">
+      # about
+    <p class="about-lead">
+      I’m currently a full stack developer at
+      <a href="#experience">
+        Thri5
+      , shipping features from database to UI on a Kotlin and Spring Boot retail operations platform.
+    <p class="about-body">
+      Before that I fine-tuned speech models at Xplode with AI and wrote Go services at StepFun in Shanghai. Lately I’ve been most interested in how several coding agents can work on one codebase without stepping on each other, which is what hq is for.
+  <dl class="about-facts mono">
+    <div>
+      <dt>
+        school
+      <dd>
+        BSE Software Engineering, UWaterloo, 2024 — 2029
+    <div>
+      <dt>
+        based
+      <dd>
+        Toronto / Waterloo, Ontario
+    <div>
+      <dt>
+        writes
+      <dd>
+        C++, Java, Python, C, TypeScript, Elixir, Swift, Scala, SQL
+    <div>
+      <dt>
+        links
+      <dd>
+        <a href="https://github.com/estanzoo">
+          github
+        ·
+        <a href="https://linkedin.com/in/estanzoo">
+          linkedin

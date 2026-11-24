@@ -1,0 +1,86 @@
+<section aria-labelledby="experience-label" class="rv section xp" id="experience">
+  <h2 class="section-label xp-label" id="experience-label">
+    # experience
+  <article class="xp-job">
+    <button aria-controls="job-thri5-panel" aria-expanded="false" class="xp-head" type="button">
+      <span class="xp-when">
+        Sep — Dec 2026
+      <span class="xp-title">
+        Full Stack Developer
+        <span class="xp-org">
+          · Thri5 Inc.
+      <span aria-hidden="true" class="xp-sign">
+        +
+    <div aria-hidden="true" class="grow xp-grow" id="job-thri5-panel">
+      <div class="xp-clip">
+        <div class="xp-body">
+          <div class="xp-where">
+            Toronto, Ontario
+          <div class="xp-main">
+            <ul class="xp-points">
+              <li>
+                Production features from database to UI on a Kotlin, Spring Boot and PostgreSQL retail operations platform.
+              <li>
+                AI-assisted development workflows with Claude Code, running specialised sub-agents in parallel through graph-based execution loops.
+              <li>
+                Code quality standards for the Kotlin mobile apps: automated testing, structured reviews, typed pages and ViewModels.
+  <article class="xp-job">
+    <button aria-controls="job-xplode-panel" aria-expanded="true" class="xp-head" type="button">
+      <span class="xp-when">
+        Jan — Apr 2026
+      <span class="xp-title">
+        Machine Learning Engineer
+        <span class="xp-org">
+          · Xplode with AI
+      <span aria-hidden="true" class="xp-sign">
+        −
+    <div aria-hidden="false" class="grow is-open xp-grow" id="job-xplode-panel">
+      <div class="xp-clip">
+        <div class="xp-body">
+          <div class="xp-where">
+            Toronto, Ontario
+          <div class="xp-main">
+            <ul class="xp-points">
+              <li>
+                LoRA fine-tuning of OpenAI’s Whisper V3, reducing WER by 40.7% across 8 languages.
+              <li>
+                Audio language ID with a fine-tuned XLS-R and an XLM-based transformer.
+              <li>
+                Backend of a FastAPI service for low-latency streaming TTS and translation over WebSockets; fine-tuned Piper TTS with custom phonemizers.
+            <div aria-label="Relative word error rate: fine-tuned Whisper V3 is 40.7% lower than the baseline, across 8 languages" class="xp-chart" role="img">
+              <div aria-hidden="true" class="xp-chart-row">
+                <span>
+                  Whisper V3, baseline WER
+                <span>
+                  100%
+              <div aria-hidden="true" class="xp-chart-base">
+              <div aria-hidden="true" class="xp-chart-row xp-chart-row-hi">
+                <span>
+                  after LoRA fine-tuning, 8 languages
+                <span>
+                  −40.7%
+              <div aria-hidden="true" class="xp-chart-track">
+                <div class="bar xp-chart-bar" style="width:59.3%">
+  <article class="xp-job">
+    <button aria-controls="job-stepfun-panel" aria-expanded="false" class="xp-head" type="button">
+      <span class="xp-when">
+        May — Aug 2025
+      <span class="xp-title">
+        Backend Developer
+        <span class="xp-org">
+          · StepFun, DeepEat team
+      <span aria-hidden="true" class="xp-sign">
+        +
+    <div aria-hidden="true" class="grow xp-grow" id="job-stepfun-panel">
+      <div class="xp-clip">
+        <div class="xp-body">
+          <div class="xp-where">
+            Shanghai, China
+          <div class="xp-main">
+            <ul class="xp-points">
+              <li>
+                Go backend for an iOS app on a Tencent RPC service, exposing new endpoints for the frontend.
+              <li>
+                Modified preorder tree traversal for storing and querying hierarchical data, with GORM and MongoDB.
+              <li>
+                Semantic search using vector embeddings, integrating StepFun’s LLM with a public data source.
