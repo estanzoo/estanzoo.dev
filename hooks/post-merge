@@ -1,0 +1,4 @@
+#!/bin/sh
+# Pass-through: core.hooksPath points at hooks/, so this runs the beads post-merge hook.
+. "$(dirname "$0")/_beads.sh"
+run_beads post-merge "$@"

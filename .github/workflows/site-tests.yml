@@ -1,4 +1,5 @@
-# Site tests: typecheck, unit, dom and build for the site.
+# Site tests: typecheck, lint, unit, dom, build and screenshots for the site, and the
+# commit-message rule on every commit a push or PR brings.
 #
 # Why the path filter sits inside a job (`changes`) and not on the trigger:
 #   A trigger-level `paths:` filter starts nothing on an unrelated PR, so no
@@ -50,6 +51,8 @@ jobs:
               - 'e2e/**'
               - 'scripts/**'
               - 'tools/**'
+              - 'hooks/**'
+              - '.beads/hooks/**'
               - 'public/**'
               - 'index.html'
               - 'package*.json'
@@ -75,7 +78,7 @@ jobs:
       # Cheapest first, then the heavy build.
       - run: npm run typecheck
 
-      # --- placeholder: 'lint' step goes here (est-dog rules task) ---
+      - run: npm run lint
 
       - run: npm run test:unit -- --reporter=default --reporter=junit --outputFile.junit=reports/unit.xml
       - run: npm run test:dom -- --reporter=default --reporter=junit --outputFile.junit=reports/dom.xml
@@ -114,9 +117,43 @@ jobs:
             playwright-report/
           if-no-files-found: ignore
 
+  # The commit-message rule (tools/check-commit-msg.ts) on every commit this event brings.
+  # Not path-filtered: the rule is about the commits, so it runs on every push and PR.
+  commits:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          # For a PR, check out the head itself, not the merge commit GitHub builds.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: commit messages
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if [ "$EVENT" = pull_request ]; then
+            set -- "$PR_BASE..$PR_HEAD"
+          elif git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            set -- "$BEFORE..$AFTER"
+          else
+            # A new branch (all-zero before) or a force push: the commits not on main.
+            set -- "$AFTER" --not origin/main
+          fi
+          echo "Checking: $*"
+          node tools/check-commit-msg.ts --commits "$@"
+
   required:
     name: site required
-    needs: [changes, test]
+    needs: [changes, test, commits]
     if: always()
     runs-on: ubuntu-latest
     permissions: {}

@@ -1,0 +1,17 @@
+#!/bin/sh
+# lint:staged, typecheck and test:related on the staged code files (none staged: skip
+# quietly), then the beads pre-commit hook, if any.
+. "$(dirname "$0")/_beads.sh"
+staged=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(js|mjs|ts|tsx)$')
+if [ -n "$staged" ]; then
+  npm run --silent lint:staged || exit $?
+  npm run --silent typecheck || exit $?
+  # One staged path per line; set them as the arguments so a space in a name survives.
+  set --
+  while IFS= read -r path; do set -- "$@" "$path"; done <<STAGED
+$staged
+STAGED
+  npm run --silent test:related -- "$@" || exit $?
+  set --
+fi
+run_beads pre-commit "$@"

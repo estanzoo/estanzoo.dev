@@ -1,0 +1,6 @@
+#!/bin/sh
+# A commit that touches src/ starts its subject with [SPEC] or [BUG] (tools/check-commit-msg.ts),
+# then the beads commit-msg hook, if any.
+. "$(dirname "$0")/_beads.sh"
+node tools/check-commit-msg.ts "$1" || exit $?
+run_beads commit-msg "$@"
