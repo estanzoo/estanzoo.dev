@@ -39,6 +39,14 @@ describe('runCommand', () => {
     expect(runCommand('stack')!.lines[1].text).toBe('c++ · java · python · c · typescript · elixir · swift · scala · sql');
   });
 
+  it('interests lists the three interests and links to the section', () => {
+    expect(runCommand('interests')!.lines[1]).toMatchObject({
+      kind: 'out',
+      text: 'f1 + sim racing · films · fashion',
+      href: '#interests',
+    });
+  });
+
   it('contact and sudo hire both link to the public email', () => {
     expect(runCommand('contact')!.lines[1]).toMatchObject({ href: 'mailto:' + site.email, linkText: site.email });
     const sudo = runCommand('sudo hire ethan')!;

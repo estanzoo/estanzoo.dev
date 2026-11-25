@@ -49,7 +49,7 @@ export function runCommand(raw: string): CommandResult | null {
   } else if (c === 'stack') {
     lines.push({ kind: 'out', text: stack.map((s) => s.toLowerCase()).join(' · ') });
   } else if (c === 'interests') {
-    lines.push({ kind: 'out', text: 'f1 + sim racing · films · speed cubing', href: '#interests', linkText: 'open ↓' });
+    lines.push({ kind: 'out', text: 'f1 + sim racing · films · fashion', href: '#interests', linkText: 'open ↓' });
   } else if (c === 'contact') {
     lines.push({ kind: 'out', text: 'mail:', href: mail, linkText: site.email });
   } else if (c.startsWith('sudo')) {

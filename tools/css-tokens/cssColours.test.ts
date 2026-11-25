@@ -46,7 +46,7 @@ const EXCEPTIONS = [
   {
     file: 'src/components/interests/Interests.css',
     colour: '#ff5a4d',
-    reason: 'the F1 start-light red, one of the cube/F1 palette the Interests VM carries as hex',
+    reason: 'the F1 start-light red, one of the F1 palette the Interests VM carries as hex',
   },
   {
     file: 'src/components/hero/Hero.css',

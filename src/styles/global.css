@@ -418,12 +418,9 @@ html[data-intro] .hero-name > span {
   .rv,
   .f1l,
   .rev,
-  .film {
+  .film,
+  .swatch {
     animation: none;
-  }
-
-  .sticker {
-    transition: none;
   }
 
   .card,
