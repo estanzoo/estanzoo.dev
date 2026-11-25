@@ -48,10 +48,16 @@ function commit(subject: string, ...paths: string[]) {
 // npm appends the script's arguments to its command line; `sh -c '...' --` takes them as $@.
 const stub = (name: string, status = 0) => `sh -c 'echo "${name} $*" >> calls.log; exit ${status}' --`;
 
+// "type": "module" as in the real package.json: without it, newer Node 24 releases warn on
+// stderr that tools/check-commit-msg.ts is reparsed as an ES module, and the hooks' stderr
+// is part of what these tests assert.
 function packageJson(scripts: Record<string, string> = {}): void {
   write(
     'package.json',
-    JSON.stringify({ scripts: { 'lint:staged': stub('lint:staged'), typecheck: stub('typecheck'), 'test:related': stub('test:related'), ...scripts } }),
+    JSON.stringify({
+      type: 'module',
+      scripts: { 'lint:staged': stub('lint:staged'), typecheck: stub('typecheck'), 'test:related': stub('test:related'), ...scripts },
+    }),
   );
 }
 
