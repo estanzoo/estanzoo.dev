@@ -1,6 +1,6 @@
 # Cloudflare: domain, hosting, email and analytics
 
-The site is hosted on Cloudflare Pages under the domain `estanzoo.dev`. These steps are done by hand in the Cloudflare dashboard (dash.cloudflare.com). Do them in this order. Menu labels are the dashboard's labels at the time of writing; when Cloudflare renames one, update this file.
+The site is hosted on Cloudflare Workers (static assets, no Worker script) under the domain `estanzoo.dev`. These steps are done by hand in the Cloudflare dashboard (dash.cloudflare.com). Do them in this order. Menu labels are the dashboard's labels at the time of writing; when Cloudflare renames one, update this file.
 
 ## 1. Buy the domain (Registrar)
 
@@ -11,28 +11,30 @@ The site is hosted on Cloudflare Pages under the domain `estanzoo.dev`. These st
 
 `.dev` is on the HSTS preload list: browsers load it over HTTPS only. Cloudflare issues the certificate; nothing else to do.
 
-## 2. Create the Pages project (Connect to Git)
+## 2. Create the Worker (Connect to Git)
 
-1. Sidebar → **Workers & Pages** → **Create** → **Pages** tab → **Connect to Git**.
+The dashboard no longer offers new Pages projects, so the site deploys as a Worker that serves only static files. `wrangler.jsonc` at the repository root names the Worker `estanzoo-dev` and serves `./dist`.
+
+1. Sidebar → **Workers & Pages** → **Create** → **Import a repository** (Connect to Git).
 2. Authorize the Cloudflare GitHub app for the site's repository only, and select the repository.
-3. **Set up builds and deployments**:
+3. **Set up your application**:
 
    | Field | Value |
    |---|---|
-   | Production branch | `main` |
-   | Framework preset | None |
+   | Project name | `estanzoo-dev` (it must match `name` in `wrangler.jsonc`) |
    | Build command | `npm run build` |
-   | Build output directory | `dist` |
+   | Deploy command | `npx wrangler deploy` |
+   | Root directory | `/` |
 
-4. Expand **Environment variables (advanced)** → add `NODE_VERSION` = `24` (it matches `.nvmrc`).
-5. **Save and Deploy**. Wait for the first deployment to succeed and open the `*.pages.dev` URL to check it.
+4. Under **Advanced settings** → **Build variables**, add `NODE_VERSION` = `24` (it matches `.nvmrc`).
+5. **Deploy**. Wait for the first deployment to succeed and open the `*.workers.dev` URL to check it.
 
-Every push to `main` deploys production. Pushes to other branches get preview deployments.
+The production branch is the repository's default branch, `main`: every push to `main` deploys production. Pushes to other branches upload preview versions when **Builds for non-production branches** is on (Settings → Build).
 
 ## 3. Custom domain: root and www
 
-1. **Workers & Pages** → the Pages project → **Custom domains** → **Set up a custom domain**.
-2. Enter `estanzoo.dev` → **Continue** → **Activate domain**. Cloudflare adds the DNS record.
+1. **Workers & Pages** → the `estanzoo-dev` Worker → **Settings** → **Domains & Routes** → **Add** → **Custom domain**.
+2. Enter `estanzoo.dev` → **Add domain**. Cloudflare adds the DNS record and certificate.
 3. Repeat with `www.estanzoo.dev`.
 4. Wait until both show **Active**.
 
@@ -57,8 +59,8 @@ The site's public address is `hello@estanzoo.dev`. Mail to it is forwarded to th
 
 ## 5. Web Analytics
 
-1. **Workers & Pages** → the Pages project → **Metrics** → **Web Analytics** → **Enable**.
-2. Cloudflare injects the analytics beacon on the next deployment. Redeploy (**Deployments** → latest → **Retry deployment**) if no data appears after a day of traffic.
+1. Sidebar → **Analytics & Logs** → **Web Analytics** → **Add a site** → `estanzoo.dev` → **Done** (automatic setup for a proxied zone).
+2. Cloudflare injects the analytics beacon at its edge. If no data appears after a day of traffic, check that the site is proxied (orange cloud) under **DNS**.
 3. The numbers are under sidebar → **Analytics & Logs** → **Web Analytics**.
 
 No cookie banner is needed: Cloudflare Web Analytics sets no cookies.

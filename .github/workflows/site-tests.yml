@@ -58,6 +58,7 @@ jobs:
               - 'package*.json'
               - '*.config.ts'
               - 'tsconfig.json'
+              - 'wrangler.jsonc'
               - '.nvmrc'
               - '.github/workflows/**'
 

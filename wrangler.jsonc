@@ -1,0 +1,9 @@
+// Cloudflare Workers deploy config: the site is static files only (Vite build plus the
+// prerender in npm run build), served from dist/ as Worker assets. No Worker script.
+// Cloudflare's Git integration runs `npm run build`, then `npx wrangler deploy`.
+{
+  "$schema": "https://unpkg.com/wrangler@4/config-schema.json",
+  "name": "estanzoo-dev",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./dist" }
+}
