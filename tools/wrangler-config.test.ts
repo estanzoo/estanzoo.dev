@@ -22,6 +22,11 @@ describe('wrangler.jsonc', () => {
     expect(config.assets).toEqual({ directory: './dist' });
   });
 
+  it('has a previews block, which wrangler preview needs for branch builds', () => {
+    const config = readJsonc(resolve(ROOT, 'wrangler.jsonc'));
+    expect(config.previews).toEqual({});
+  });
+
   it('names the Worker estanzoo-dev and sets a compatibility date', () => {
     const config = readJsonc(resolve(ROOT, 'wrangler.jsonc'));
     expect(config.name).toBe('estanzoo-dev');
