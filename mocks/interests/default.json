@@ -1,5 +1,5 @@
 {
-  "_scenario": "A visitor reaches the interests section: the design’s fixed scramble and cube face, the timer at 0.00 and ready to start.",
+  "_scenario": "A visitor reaches the interests section: the F1 lights and rev bar, the film strip and the fashion card with its row of fabric swatches.",
   "vm": {
     "intro": "What I’m into when I’m not at a keyboard.",
     "f1": {
@@ -83,48 +83,11 @@
         "body": "[Favourite directors, recent watches, Letterboxd link]"
       }
     },
-    "cubing": {
+    "fashion": {
       "card": {
-        "kicker": "03 · solving",
-        "title": "Speed cubing",
-        "body": "[Your events and personal bests]"
-      },
-      "stickers": [
-        {
-          "colour": "#4D9BFF"
-        },
-        {
-          "colour": "#F2F2F2"
-        },
-        {
-          "colour": "#FF5A4D"
-        },
-        {
-          "colour": "#FFD84D"
-        },
-        {
-          "colour": "#5BD68A"
-        },
-        {
-          "colour": "#F2F2F2"
-        },
-        {
-          "colour": "#FF9F43"
-        },
-        {
-          "colour": "#4D9BFF"
-        },
-        {
-          "colour": "#FFD84D"
-        }
-      ],
-      "scramble": "R U2 F' L D2 B' R2 U' F L' D B2",
-      "scrambleLabel": "new scramble",
-      "timer": {
-        "kind": "idle",
-        "text": "0.00",
-        "label": "start timer",
-        "pressed": false
+        "kicker": "03 · wearing",
+        "title": "Fashion",
+        "body": "[Designers, brands or pieces you’re into]"
       }
     }
   }

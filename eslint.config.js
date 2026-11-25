@@ -50,16 +50,16 @@ export default defineConfig([
     rules: { 'local/design-tokens': 'error' },
   },
   {
-    // The cube sticker and F1 rev colours are view-model values: the View writes them into
+    // The F1 rev colours are view-model values: the View writes them into
     // style="background:..." and the markup pins (src/testing/pins/interests.txt) hold
     // them as hex. Token names would change that markup, so these two files may carry
-    // exactly the STICKER_COLOURS and REV_COLOURS of interestsVm.ts, nothing else.
+    // exactly the REV_COLOURS of interestsVm.ts, nothing else.
     files: ['src/components/interests/interestsVm.ts', 'src/components/interests/Interests.tsx'],
     ignores: TESTS,
     rules: {
       'local/design-tokens': [
         'error',
-        { allow: ['#F2F2F2', '#FFD84D', '#FF5A4D', '#FF9F43', '#4D9BFF', '#5BD68A', '#7EE787', '#FFB454'] },
+        { allow: ['#7EE787', '#FFB454', '#FF5A4D'] },
       ],
     },
   },
