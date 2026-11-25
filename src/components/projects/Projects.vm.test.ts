@@ -57,6 +57,22 @@ describe('projectsVm', () => {
     });
   });
 
+  it('shows the NoteWorks copy taken from the public repo', () => {
+    expect(byId(projectsVm('all', 'hq')).noteworks).toMatchObject({
+      name: 'NoteWorks',
+      date: 'Feb 2026',
+      tags: 'Swift · TypeScript · PostgreSQL · Supabase · Gemini',
+      desc: 'A native iPad note-taking app in SwiftUI, with course spaces, a student community and AI study tools on a Supabase backend.',
+      points: [
+        'PencilKit canvas whose Apple Pencil drawing works alongside zoom and pan gestures.',
+        'Per-page ink persistence, with text, image and shape overlays on each page.',
+        'Deno edge functions serve notes, posts, comments and uploads; Gemini calls that organise notes and find gaps between them run server-side.',
+        'Apple, Google and email sign-in, plus GitHub Actions CI that checks migrations apply and TypeScript types generate.',
+      ],
+      link: { kind: 'link', href: 'https://noteworks.studio', label: 'noteworks.studio' },
+    });
+  });
+
   it('a project with an empty href gets the [add link] placeholder', () => {
     const list = [{ ...projects[0], href: '' }];
     expect(projectsVm('all', 'hq', list).cards[0].link).toEqual({ kind: 'placeholder', label: '[add link]' });

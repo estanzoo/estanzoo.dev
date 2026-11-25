@@ -55,15 +55,15 @@
       {
         "id": "noteworks",
         "name": "NoteWorks",
-        "date": "Mar 2026",
-        "desc": "A native iPad note editor in SwiftUI on a layered serverless Supabase backend.",
-        "tags": "Swift · TypeScript · PostgreSQL · Supabase",
+        "date": "Feb 2026",
+        "desc": "A native iPad note-taking app in SwiftUI, with course spaces, a student community and AI study tools on a Supabase backend.",
+        "tags": "Swift · TypeScript · PostgreSQL · Supabase · Gemini",
         "detailsId": "project-noteworks-details",
         "points": [
-          "Custom PKCanvasView integration with gesture coordination between zoom/pan and drawing.",
-          "Per-page ink persistence, with overlay layers for text and image annotations.",
-          "Edge functions handle business logic, validation and file orchestration; AI API calls go through a secure server-side pipeline.",
-          "Apple, Google and email OTP sign-in, plus GitHub Actions CI for schema migrations and TypeScript type generation."
+          "PencilKit canvas whose Apple Pencil drawing works alongside zoom and pan gestures.",
+          "Per-page ink persistence, with text, image and shape overlays on each page.",
+          "Deno edge functions serve notes, posts, comments and uploads; Gemini calls that organise notes and find gaps between them run server-side.",
+          "Apple, Google and email sign-in, plus GitHub Actions CI that checks migrations apply and TypeScript types generate."
         ],
         "details": {
           "kind": "closed",
