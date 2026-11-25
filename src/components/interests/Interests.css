@@ -1,6 +1,7 @@
-/* Interests section: three cards (F1, films, speed cubing).
-   Ported from the #interests block of docs/design/Panes.dc.html.
-   Reduced-motion for .f1l/.rev/.film/.sticker is also covered in global.css. */
+/* Interests section: three cards (F1, films, fashion).
+   Ported from the #interests block of docs/design/Panes.dc.html; the fashion card replaces
+   the design's speed cubing card.
+   Reduced-motion for .f1l/.rev/.film/.swatch is also covered in global.css. */
 
 .interests-label {
   margin-bottom: 8px;
@@ -156,71 +157,102 @@
   to { transform: translateX(-192px); }
 }
 
-/* ---------- Speed cubing ---------- */
-.cube-visual {
-  min-height: 112px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.cube-grid {
-  flex: 0 0 104px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 4px;
-}
-
-.sticker {
-  aspect-ratio: 1 / 1;
-  border-radius: 5px;
-  transition: background 0.35s;
-}
-
-.cube-readout {
-  min-width: 0;
+/* ---------- Fashion: fabric swatches on a rail ----------
+   Six swatches hang from a rail and sway slowly, out of step. Colours are palette tokens;
+   each weave is a token stripe pattern mixed down so it reads as texture, not pattern. */
+.fashion-visual {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-family: var(--font-mono);
+  justify-content: flex-start;
+  padding-top: 8px;
 }
 
-.cube-time {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
+.fashion-rail {
+  height: 3px;
+  max-width: 300px;
+  border-radius: 2px;
+  background: var(--line-hover);
 }
 
-.cube-scramble {
-  font-size: 12px;
-  color: var(--muted);
-  overflow-wrap: anywhere;
-}
-
-.cube-actions {
-  margin-top: auto;
+.fashion-swatches {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
+  max-width: 300px;
+  padding: 10px 6px 0;
 }
 
-.cube-chip {
-  background: var(--bg);
+.swatch {
+  --weave: color-mix(in srgb, var(--frame) 22%, transparent);
+  position: relative;
+  flex: 1 1 0;
+  max-width: 40px;
+  height: 78px;
+  border-radius: 2px 2px 4px 4px;
+  transform-origin: 50% -10px;
+  animation: sway 5.2s ease-in-out infinite alternate;
 }
 
-.cube-toggle {
-  min-width: 116px;
+/* The hanger loop up to the rail. */
+.swatch::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 10px;
+  background: var(--line-hover);
+}
+
+/* Linen: a fine diagonal weave. */
+.swatch:nth-child(1) {
+  background: repeating-linear-gradient(45deg, var(--weave) 0 1px, transparent 1px 4px), var(--accent);
+  animation-delay: -0.4s;
+}
+
+/* Pinstripe. */
+.swatch:nth-child(2) {
+  background: repeating-linear-gradient(90deg, transparent 0 5px, var(--weave) 5px 6px), var(--err);
+  animation-delay: -2.1s;
+}
+
+/* Gingham check. */
+.swatch:nth-child(3) {
+  background:
+    repeating-linear-gradient(0deg, var(--weave) 0 4px, transparent 4px 8px),
+    repeating-linear-gradient(90deg, var(--weave) 0 4px, transparent 4px 8px),
+    var(--body);
+  animation-delay: -3.6s;
+}
+
+/* Twill. */
+.swatch:nth-child(4) {
+  background: repeating-linear-gradient(-30deg, var(--weave) 0 2px, transparent 2px 5px), var(--line-hover);
+  animation-delay: -1.3s;
+}
+
+/* Plain cotton. */
+.swatch:nth-child(5) {
+  background: var(--ok);
+  animation-delay: -4.4s;
+}
+
+/* Corduroy: vertical ribs. */
+.swatch:nth-child(6) {
+  background: repeating-linear-gradient(90deg, var(--weave) 0 2px, transparent 2px 4px), var(--muted);
+  animation-delay: -2.8s;
+}
+
+@keyframes sway {
+  from { transform: rotate(-2.5deg); }
+  to { transform: rotate(2.5deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .f1l,
   .rev,
-  .film {
+  .film,
+  .swatch {
     animation: none;
-  }
-
-  .sticker {
-    transition: none;
   }
 }
