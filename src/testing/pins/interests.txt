@@ -43,7 +43,7 @@
       <h3 class="interest-title">
         Films
       <p class="interest-body">
-        Christopher Nolan is the director I keep coming back to. The last film I watched was “You Can See Everything”.
+        Christopher Nolan is my favourite director. The last thing I watched was “You Can See Everything”.
     <article class="card interest-card">
       <div aria-hidden="true" class="fashion-visual interest-visual">
         <div class="fashion-rail">
@@ -59,4 +59,4 @@
       <h3 class="interest-title">
         Fashion
       <p class="interest-body">
-        Lemaire and Acne Studios are the labels I come back to most, along with JCaesar Studios.
+        I’m drawn to JCaesar Studios, Lemaire and Acne Studios.
