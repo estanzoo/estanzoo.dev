@@ -40,4 +40,10 @@ describe('interestsVm', () => {
       expect(card.body).not.toMatch(/^\[.*\]$/);
     }
   });
+
+  it('no two card bodies share the phrase "come back to"', () => {
+    const vm = interestsVm();
+    const bodies = [vm.f1.card, vm.films.card, vm.fashion.card].map((card) => card.body);
+    expect(bodies.filter((body) => /c[oa]m(e|ing) back to/i.test(body)).length).toBeLessThan(2);
+  });
 });

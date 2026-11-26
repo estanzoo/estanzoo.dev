@@ -185,8 +185,8 @@ export const werChart = {
 export const interests = {
   intro: 'What I’m into when I’m not at a keyboard.',
   f1: { kicker: '01 · watching and driving', title: 'F1 and sim racing', body: 'I’ve watched since 2023 and follow McLaren, with Lando Norris as my driver. Zandvoort is my favourite track, banked corners and all.' },
-  films: { kicker: '02 · watching', title: 'Films', body: 'Christopher Nolan is the director I keep coming back to. The last film I watched was “You Can See Everything”.' },
-  fashion: { kicker: '03 · wearing', title: 'Fashion', body: 'Lemaire and Acne Studios are the labels I come back to most, along with JCaesar Studios.' },
+  films: { kicker: '02 · watching', title: 'Films', body: 'Christopher Nolan is my favourite director. The last thing I watched was “You Can See Everything”.' },
+  fashion: { kicker: '03 · wearing', title: 'Fashion', body: 'I’m drawn to JCaesar Studios, Lemaire and Acne Studios.' },
 };
 
 export const contact = {
