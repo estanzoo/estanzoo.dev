@@ -29,11 +29,15 @@ describe('interestsVm', () => {
     expect([vm.f1.card, vm.films.card, vm.fashion.card]).toEqual([interests.f1, interests.films, interests.fashion]);
   });
 
-  it('the fashion card is 03 · wearing, Fashion, with the owner placeholder', () => {
-    expect(interestsVm().fashion.card).toEqual({
-      kicker: '03 · wearing',
-      title: 'Fashion',
-      body: '[Designers, brands or pieces you’re into]',
-    });
+  it('the fashion card is 03 · wearing, Fashion', () => {
+    const { kicker, title } = interestsVm().fashion.card;
+    expect({ kicker, title }).toEqual({ kicker: '03 · wearing', title: 'Fashion' });
+  });
+
+  it('every card body is real copy, not a bracketed placeholder', () => {
+    const vm = interestsVm();
+    for (const card of [vm.f1.card, vm.films.card, vm.fashion.card]) {
+      expect(card.body).not.toMatch(/^\[.*\]$/);
+    }
   });
 });
