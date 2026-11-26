@@ -181,12 +181,12 @@ export const werChart = {
   summary: `Relative word error rate: fine-tuned Whisper V3 is ${wer.reduction}% lower than the baseline, across ${wer.languages} languages`,
 };
 
-/** Interest cards. Replace the bracketed text when you're ready. */
+/** Interest cards. */
 export const interests = {
   intro: 'What I’m into when I’m not at a keyboard.',
-  f1: { kicker: '01 · watching and driving', title: 'F1 and sim racing', body: '[Team or driver you follow, your sim and rig, favourite track]' },
-  films: { kicker: '02 · watching', title: 'Films', body: '[Favourite directors, recent watches, Letterboxd link]' },
-  fashion: { kicker: '03 · wearing', title: 'Fashion', body: '[Designers, brands or pieces you’re into]' },
+  f1: { kicker: '01 · watching and driving', title: 'F1 and sim racing', body: 'I’ve watched since 2023 and follow McLaren, with Lando Norris as my driver. Zandvoort is my favourite track, banked corners and all.' },
+  films: { kicker: '02 · watching', title: 'Films', body: 'Christopher Nolan is the director I keep coming back to. The last film I watched was “You Can See Everything”.' },
+  fashion: { kicker: '03 · wearing', title: 'Fashion', body: 'Lemaire and Acne Studios are the labels I come back to most, along with JCaesar Studios.' },
 };
 
 export const contact = {

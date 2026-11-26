@@ -30,7 +30,7 @@
       <h3 class="interest-title">
         F1 and sim racing
       <p class="interest-body">
-        [Team or driver you follow, your sim and rig, favourite track]
+        I’ve watched since 2023 and follow McLaren, with Lando Norris as my driver. Zandvoort is my favourite track, banked corners and all.
     <article class="card interest-card">
       <div aria-hidden="true" class="film-visual interest-visual">
         <div class="film-window">
@@ -43,7 +43,7 @@
       <h3 class="interest-title">
         Films
       <p class="interest-body">
-        [Favourite directors, recent watches, Letterboxd link]
+        Christopher Nolan is the director I keep coming back to. The last film I watched was “You Can See Everything”.
     <article class="card interest-card">
       <div aria-hidden="true" class="fashion-visual interest-visual">
         <div class="fashion-rail">
@@ -59,4 +59,4 @@
       <h3 class="interest-title">
         Fashion
       <p class="interest-body">
-        [Designers, brands or pieces you’re into]
+        Lemaire and Acne Studios are the labels I come back to most, along with JCaesar Studios.
