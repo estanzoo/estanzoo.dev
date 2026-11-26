@@ -1,5 +1,5 @@
 {
-  "_scenario": "The visitor opened Ring or Ping, which closed hq: only Ring or Ping shows its details.",
+  "_scenario": "The visitor opened Ring or Ping: only Ring or Ping shows its details.",
   "vm": {
     "heading": "# projects",
     "filterGroupLabel": "Filter projects",
