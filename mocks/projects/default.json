@@ -1,5 +1,5 @@
 {
-  "_scenario": "A visitor reaches the projects: every card shows, the all filter is pressed and hq has its details open.",
+  "_scenario": "A visitor reaches the projects: every card shows, the all filter is pressed and every card is closed.",
   "vm": {
     "heading": "# projects",
     "filterGroupLabel": "Filter projects",
@@ -40,10 +40,10 @@
           "The engineer can talk to any sub-agent directly."
         ],
         "details": {
-          "kind": "open",
-          "toggleLabel": "− less",
-          "expanded": true,
-          "dataOpen": ""
+          "kind": "closed",
+          "toggleLabel": "+ details",
+          "expanded": false,
+          "dataOpen": null
         },
         "toggleContext": "about hq",
         "link": {

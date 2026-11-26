@@ -1,6 +1,7 @@
-// Projects container (owner decision 3): owns the filter and the single open card, builds
-// the ProjectsVm from content.ts and hands it to the logic-free ProjectsView. Every
-// decision about what the section shows is made here, in projectsVm(); the View only draws.
+// Projects container (owner decision 3): owns the filter and the single open card (none on
+// load), builds the ProjectsVm from content.ts and hands it to the logic-free ProjectsView.
+// Every decision about what the section shows is made here, in projectsVm(); the View only
+// draws.
 //
 // Only App.tsx and containers import src/content.ts.
 import { useState } from 'react';
@@ -49,7 +50,7 @@ export function projectsVm(filter: FilterId, openId: string, list: Project[] = p
 
 export function Projects() {
   const [filter, setFilter] = useState<FilterId>('all');
-  const [openId, setOpenId] = useState<string>('hq');
+  const [openId, setOpenId] = useState<string>('');
 
   const onFilter = (id: string) => setFilter(id as FilterId);
   const onToggle = (id: string) => setOpenId((current) => (current === id ? '' : id));
