@@ -22,7 +22,7 @@
         An Elixir/OTP service that coordinates teams of Claude Code agents working in parallel, and lets them message each other mid-task.
       <div class="project-tags">
         Elixir · OTP · Claude Code · Bash
-      <div class="grow project-details" data-open="" id="project-hq-details">
+      <div class="grow project-details" id="project-hq-details">
         <div class="project-details-inner">
           <ul>
             <li>
@@ -34,8 +34,8 @@
             <li>
               The engineer can talk to any sub-agent directly.
       <div class="project-foot">
-        <button aria-controls="project-hq-details" aria-expanded="true" class="project-toggle" type="button">
-          − less
+        <button aria-controls="project-hq-details" aria-expanded="false" class="project-toggle" type="button">
+          + details
           <span class="sr-only">
             about hq
         <a class="project-link" href="https://github.com/estanzoo/hq">

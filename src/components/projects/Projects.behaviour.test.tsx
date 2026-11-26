@@ -1,6 +1,7 @@
 // L5 browser behaviour: proves the Projects section's interactions in a DOM emulator
 // (jsdom) - the filter chips press one at a time and dim the cards outside the category,
-// hq starts open, opening another card closes it, and a second click closes the open card.
+// every card starts closed, opening one card closes the other open card, and a second click
+// closes the open card.
 // Leaves to other layers: the static markup (markup pins, src/testing/pins.test.ts), the
 // VM rules in isolation (Projects.vm.test.ts) and the CSS dim and open transition (screens).
 import { render, screen, within } from '@testing-library/react';
@@ -70,7 +71,8 @@ describe('Projects filters', () => {
   });
 
   it('a filter leaves the open card open', async () => {
-    const { user, chip, expanded } = setup();
+    const { user, chip, toggle, expanded } = setup();
+    await user.click(toggle('hq'));
     await user.click(chip('ios'));
     expect(expanded()).toEqual(['hq']);
   });
@@ -80,16 +82,26 @@ describe('Projects details toggles', () => {
   beforeEach(useFakeClock);
   afterEach(restoreClock);
 
-  it('hq starts open with its − less toggle and the others closed', () => {
+  it('every card starts closed with its + details toggle', () => {
     const { toggle, card, expanded } = setup();
+    expect(expanded()).toEqual([]);
+    for (const name of ['hq', 'NoteWorks', 'Ring or Ping', 'Gnostic']) {
+      expect(toggle(name)).toHaveTextContent('+ details');
+      expect(card(name).querySelector('.project-details')).not.toHaveAttribute('data-open');
+    }
+  });
+
+  it('clicking + details opens that card', async () => {
+    const { user, toggle, card, expanded } = setup();
+    await user.click(toggle('hq'));
     expect(expanded()).toEqual(['hq']);
     expect(toggle('hq')).toHaveTextContent('− less');
-    expect(toggle('NoteWorks')).toHaveTextContent('+ details');
     expect(card('hq').querySelector('.project-details')).toHaveAttribute('data-open', '');
   });
 
   it('opening NoteWorks closes hq: only one card is open', async () => {
     const { user, toggle, card, expanded } = setup();
+    await user.click(toggle('hq'));
     await user.click(toggle('NoteWorks'));
     expect(expanded()).toEqual(['NoteWorks']);
     expect(toggle('NoteWorks')).toHaveTextContent('− less');
@@ -100,12 +112,14 @@ describe('Projects details toggles', () => {
   it('clicking the open card toggle closes it, leaving every card closed', async () => {
     const { user, toggle, expanded } = setup();
     await user.click(toggle('hq'));
+    await user.click(toggle('hq'));
     expect(expanded()).toEqual([]);
     expect(toggle('hq')).toHaveTextContent('+ details');
   });
 
-  it('a closed card opens again on a second click', async () => {
+  it('a closed card opens again after it was closed', async () => {
     const { user, toggle, expanded } = setup();
+    await user.click(toggle('hq'));
     await user.click(toggle('hq'));
     await user.click(toggle('hq'));
     expect(expanded()).toEqual(['hq']);
